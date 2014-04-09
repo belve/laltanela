@@ -25,9 +25,9 @@ $tab_sync['tiendas']=1;
 
 
 global $dbnivel; global $tiendas;
-$dbnivel=new DB('192.168.1.11','edu','admin','risase');
+$dbnivel=new DB('192.168.1.11','edu','admin','laltalena');
 
-$pathimages="c:/D/fotos/";
+$pathimages="c:/D/fotos_altanela/";
 $urlimages="/photos/";
 
 require_once("../functions/gettiendas.php");
