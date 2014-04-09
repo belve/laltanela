@@ -1,0 +1,125 @@
+
+truncate table `risase`.`articulos`;
+truncate table `risase`.`empleados`;
+truncate table `risase`.`proveedores`;
+truncate table `risase`.`subgrupos`;
+truncate table `risase`.`tiendas`;
+truncate table `risase`.`repartir`;
+truncate table `risase`.`agrupedidos`;
+truncate table `risase`.`pedidos`;
+truncate table `risase`.`reposiciones`;
+truncate table `risase`.`roturas`;
+truncate table `risase`.`syncupdate`;
+truncate table `risase`.`reposiciones`;
+truncate table `risase`.`reposiciones`;
+truncate table `risase`.`reposiciones`;
+
+http://192.168.1.11/importadores/colores.php Arreglar
+
+http://192.168.1.11/importadores/empleados.php 
+
+http://192.168.1.11/importadores/proveedores.php 
+
+http://192.168.1.11/importadores/grupos.php Arreglar
+
+http://192.168.1.11/importadores/subgrupos.php 
+
+http://192.168.1.11/importadores/tiendas.php 
+
+
+http://192.168.1.11/importadores/articulos.php
+
+http://192.168.1.11/importadores/repartos.php
+
+http://192.168.1.11/importadores/detreparto.php
+
+http://192.168.1.11/importadores/pedidos.php 
+
+http://192.168.1.11/importadores/detpedido.php
+
+____________________________________________________
+update repartir set estado='P' where estado='A';
+update repartir set estado='A' where estado='T';
+update repartir set estado='T' where estado='E';
+
+update agrupedidos set estado='P' where estado='A';
+update agrupedidos set estado='A' where estado='T';
+update agrupedidos set estado='T' where estado='E';
+
+update pedidos set estado='-' where estado='A';
+update pedidos set estado='A' where estado='T';
+update pedidos set estado='T' where estado='E';
+_______________________________________________________
+
+Reparar stock de repartos
+
+
+ultimos tickets buenos 2013-11-15
+delete from tickets where fecha >= '2013-11-15';
+delete from ticket_det where fecha >= '2013-11-15';
+
+http://192.168.1.11/importadores/tickects.php
+http://192.168.1.11/importadores/detTicket.php
+
+http://192.168.1.11/importadores/tick_A.php
+http://192.168.1.11/importadores/det_tick_A.php
+
+
+Y RISASA
+
+
+___________________________________________________ 
+arregla tickets largos
+
+
+UPDATE tickets SET 
+id_tienda=(SELECT id FROM tiendas WHERE id_tienda=substring(id_ticket,1,4)), 
+hora=substring(id_ticket,11,2) 
+WHERE length(id_ticket)=16;
+
+UPDATE ticket_det SET 
+id_tienda=(SELECT id FROM tiendas WHERE id_tienda=substring(id_ticket,1,4)), 
+hora=substring(id_ticket,11,2) 
+WHERE length(id_ticket)=16;
+
+Y RISASA
+
+_______________________________________________________________________
+
+stocklocales
+copiar todos los mdbs
+http://192.168.1.70/importadores/stockslocales.php
+
+
+
+
+delete from articulos where id IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from pedidos where id_articulo IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from repartir where id_articulo IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+
+delete from stocklocal_2 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from stocklocal_9 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from stocklocal_12 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from stocklocal_18 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from stocklocal_27 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+delete from stocklocal_36 where id_art IN (1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008);
+
+
+
+
+TPV..
+
+http://192.168.1.44/functions/createDB.php?tienda=COR
+
+
+mysql
+
+SET GLOBAL query_cache_size = 160777216;
+show status like 'Qcache%';
+
+
+backup
+http://chuwiki.chuidiang.org/index.php?title=Volcado_de_seguridad_en_MySQL_con_mysqldump
+
+
+
