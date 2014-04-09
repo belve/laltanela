@@ -7,7 +7,7 @@
 
 
 
-<title>Aplicación Gestión RISASE</title>
+<title>Aplicación Gestión L'Altalena'</title>
 
 
 <script type="text/javascript" src="/jquery/jquery-1.9.0.min.js"></script>
