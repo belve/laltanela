@@ -8,6 +8,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 
 $newcod=strtoupper($newcod);
 
+
 $queryp= "select orden from tiendas where activa=1 ORDER BY orden DESC limit 1;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$ultimo=$row['orden'];};
