@@ -70,7 +70,7 @@ $subg[$row['id_grupo'] . $row['clave']]	=$row['g'] . "/" . $row['nombre'];
 if (!$dbn->close()){die($dbn->error());};
 	
 	
-$db='tpv_backup';
+$db='laltalena_backup';
 $dbn=new DB('192.168.1.11','edu','admin',$db);
 if (!$dbn->open()){die($dbn->error());};
 

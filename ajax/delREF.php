@@ -35,7 +35,7 @@ SyncModBD($queryp);
 
 
 
-$dbnivelBAK=new DB('192.168.1.11','tpv','tpv','tpv_backup');
+$dbnivelBAK=new DB('192.168.1.11','tpv','tpv','laltalena_backup');
 if (!$dbnivelBAK->open()){die($dbnivelBAK->error());};
 
 foreach ($tiendas as $idt => $value) {

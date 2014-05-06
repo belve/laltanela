@@ -233,7 +233,7 @@ $cdg[$key]=$cdgP[$key];
 
 
 
-$dbBAK=new DB('192.168.1.11','edu','admin','tpv_backup');
+$dbBAK=new DB('192.168.1.11','edu','admin','laltalena_backup');
 if (!$dbBAK->open()){die($dbBAK->error());};
 
 if(count($cBAK)>0){

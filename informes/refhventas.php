@@ -269,7 +269,7 @@ $cods2=substr($cods2, 0,-1);
 if (!$dbnivel->close()){die($dbnivel->error());};
 
 
-$dbBAK=new DB('192.168.1.11','edu','admin','tpv_backup');
+$dbBAK=new DB('192.168.1.11','edu','admin','laltalena_backup');
 if (!$dbBAK->open()){die($dbBAK->error());};
 
 if(count($tiendas)>0){
