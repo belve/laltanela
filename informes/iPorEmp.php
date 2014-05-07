@@ -57,7 +57,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
-if($risase){$db='laltanela';}else{$db='laltanela';};
+if($risase){$db='laltalena_a';}else{$db='laltalena';};
 $dbn=new DB('192.168.1.11','edu','admin',$db);
 
 if (!$dbn->open()){die($dbn->error());};

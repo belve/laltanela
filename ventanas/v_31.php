@@ -64,8 +64,8 @@ window.top.tselALL	=1;
 	
 <?php if($ussid['ra']){   ?>	
 	<div style=" margin-bottom: 14px;">
-		<div id="bRISASA" class="risaB" onclick="risa();">RISASA</div> 
-		<div id="bRISASE" class="risaB" style="background-color:#8DC29E;" onclick="risa();">RISASE</div>
+		<div id="bRISASA" class="risaB" onclick="risa();">APP A</div> 
+		<div id="bRISASE" class="risaB" style="background-color:#8DC29E;" onclick="risa();">APP B</div>
 		<div style="clear:both;"></div>
 	</div>
 <?php }else{ echo '<div class="norisasa"></div>';  }; ?>

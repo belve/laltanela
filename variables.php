@@ -5,7 +5,7 @@ $iva=21;
 
 ######## risasa
 $delT=10;     #### elimina uno de cada
-$tnoRISASA=array(27,39,13,7,6,5,2,331,16,21,4,28);	###### tiendas que no procesa
+$tnoRISASA=array(6);	###### tiendas que no procesa
 ##################################
 
 

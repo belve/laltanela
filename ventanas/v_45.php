@@ -3,7 +3,7 @@ require_once("../db.php");
 require_once("../variables.php");
 
 
-$dbnivel2=new DB('192.168.1.11','edu','admin','risasa');
+$dbnivel2=new DB('192.168.1.11','edu','admin','laltalena_a');
 if (!$dbnivel2->open()){die($dbnivel2->error());};
 $queryp= "select id_ticket from tickets ORDER BY id DESC limit 1;"; 
 $dbnivel2->query($queryp);
