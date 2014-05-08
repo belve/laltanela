@@ -77,22 +77,19 @@ $cdg[$codbar]=1;
 }}}}
 
 
-echo "_____";
-print_r($cdg);
+
 
 
 
 if (count($codigos)>0){foreach($codigos as $codbarras => $point){
 
-																												if($debug){echo "$codbarras <br>";};
-
 $donde=$pathimages . $codbarras . "-*.[jJ][pP][gG]";															if($debug){echo "$donde <br>";};
 $list = glob($donde); 
 																												if($debug){print_r($list); echo " <br><br>";};
 if(count($list)>0){foreach ($list as $point => $codi){
-//$cod=str_replace($pathimages, '', $codi);
-#$codigs=explode('-', $cod);
-$files[]=$codi;	
+$cod=str_replace($pathimages, '', $codi);
+$codigs=explode('-', $cod);
+$files[]=$codigs[0];	
 }}	
 	
 }}
