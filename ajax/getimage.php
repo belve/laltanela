@@ -107,6 +107,8 @@ if($nodet){
 foreach ($cdg as $cd => $uno) {
 $files[]=$cd;		
 }	
+
+print_r($files);
 	
 echo json_encode($files);	
 }else{
