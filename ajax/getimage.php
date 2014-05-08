@@ -90,7 +90,7 @@ $donde=$pathimages . $codbarras . "-*.[jJ][pP][gG]";															if($debug){ec
 $list = glob($donde); 
 																												if($debug){print_r($list); echo " <br><br>";};
 if(count($list)>0){foreach ($list as $point => $codi){
-#$cod=str_replace($pathimages, '', $codi);
+$cod=str_replace($pathimages, '', $codi);
 #$codigs=explode('-', $cod);
 $files[]=$codi;	
 }}	
