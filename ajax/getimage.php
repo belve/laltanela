@@ -89,7 +89,7 @@ $list = glob($donde);
 if(count($list)>0){foreach ($list as $point => $codi){
 $cod=str_replace($pathimages, '', $codi);
 $codigs=explode('-', $cod);
-$files[]=$cod;	
+$files[]=$codigs[];	
 }}	
 	
 }}
