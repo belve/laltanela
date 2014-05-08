@@ -67,7 +67,7 @@ $cord[$g][$sg][$c]=$cd;
 
 
 };
-																												if($debug){echo $queryp; echo "<br><br>" ; print_r($codigos); echo " <br><br>";};
+															if($debug){echo $queryp; echo "<br><br>" ; print_r($codigos); echo " <br><br>";};
 
 
 $cdg=array();
@@ -101,7 +101,7 @@ $files[]=$codi;
 
 $files2['img']=$files;
 $files2['cod']=$cdg;
-$nodet=0;
+
 if($nodet){
 	
 foreach ($cdg as $cd => $uno) {
