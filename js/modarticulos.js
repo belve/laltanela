@@ -60,22 +60,23 @@ $('#cod').select();
 
 
 function cargafoto(id){
-document.getElementById('opciones').innerHTML='';	
-document.getElementById('foto').src='http://192.168.1.11/photos/nodisp.jpg';	
+if(document.getElementById('opciones')){
+document.getElementById('opciones').innerHTML='';
+}	
+document.getElementById('foto').src='http://laltalena.com/photos/nodisp.jpg';	
 url = "/ajax/getimage.php?nodet=1&codbarras=" + id;
 $.getJSON(url, function(data) {
 $.each(data, function(key, val) {
 
 if(key==0){
 val=val.replace('c:/D/fotos/','');	
-document.getElementById('foto').src='http://192.168.1.11/photos/' + val;};  
+document.getElementById('foto').src='http://laltalena.com/photos/' + val;};  
 
 if(key>0){
 if(document.getElementById('opciones')){	
 var op=document.getElementById('opciones').innerHTML;
 op=op + val + " ";
 document.getElementById('opciones').innerHTML=op;};  
-
 }
 
 });
