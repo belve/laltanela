@@ -36,7 +36,7 @@ $format=array(); $BOLDrang=array(); $tipo=""; $temp="";$ccn=0;$total=0;
 $ttss="";$rot=0; $dev=0; 
 foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";   eval($asignacion);};
 
-
+$repos=array();
 
 
 if (!$dbnivel->open()){die($dbnivel->error());};
@@ -48,6 +48,7 @@ substring( (select codbarras from articulos where id=ida),1,2) as G,
 sum(repo * (select preciocosto from articulos where articulos.id=ida) ) as SI 
 from reposiciones WHERE temp = '$temp' group by G;
  ";	
+
 $dbnivel->query($queryp);if($debug){echo "$queryp \n\n";}; 
 echo $dbnivel->error();
 while ($row = $dbnivel->fetchassoc()){
