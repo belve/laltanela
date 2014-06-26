@@ -6,8 +6,9 @@ ini_set("memory_limit", "-1");
 require_once("basics.php");
 require_once("../db.php");
 require_once("../variables.php");
+require_once("gimagF.php");
 
-$pathimages="c:/D/fotos/";
+$pathimages="c:/D/fotos_altanela/";
 
 $debug=0;
 
@@ -356,11 +357,17 @@ $grid[$fila][$colu[$col]]=$codigos[$codbar]; $col++;
 
 
 #######################333 fotos
+/*
 $file = fopen ("http://laltalena.com/ajax/getimage.php?codbarras=$codbar", "r");
 while (!feof ($file)) { $fotos = fgets ($file, 1024);};
 fclose($file);
-
 $dfotos=json_decode($fotos, true);
+*/
+
+
+$dfotos=get_im($codbar);
+
+
 $afotos=$dfotos['img'];
 $acodes=$dfotos['cod'];
 
