@@ -3,7 +3,7 @@
 function get_im($codbarras,$dbnivel){
 require_once("../variables.php");
 $nodet="";
-
+$pathimages="c:/D/fotos_altanela/";
 
 $codigos[$codbarras]=1;
 $files=array();
