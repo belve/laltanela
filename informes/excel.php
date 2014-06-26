@@ -184,7 +184,7 @@ $objDrawing->setOffsetX(2);                // pins the top left corner of the im
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 	
 	
-	
+
 }}}
 
 
