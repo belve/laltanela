@@ -178,7 +178,7 @@ $objDrawing->setName($val);
 $objDrawing->setDescription($val);
 $objDrawing->setPath($val);       // filesystem reference for the image file
 //$objDrawing->setHeight(58);                 // sets the image height to 36px (overriding the actual image height); 
-$objDrawing->setWidthAndHeight(80,58);                 // sets the image height to 36px (overriding the actual image height);
+$objDrawing->setWidthAndHeight(120,58);                 // sets the image height to 36px (overriding the actual image height);
 $objDrawing->setCoordinates($colu . $fila);    // pins the top-left corner of the image to cell D24
 $objDrawing->setOffsetX(2);                // pins the top left corner of the image at an offset of 10 points horizontally to the right of the top-left corner of the cell
 $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
