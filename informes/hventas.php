@@ -365,7 +365,7 @@ $dfotos=json_decode($fotos, true);
 */
 
 
-$dfotos=get_im($codbar);
+$dfotos=get_im($codbar,$dbnivel);
 
 
 $afotos=$dfotos['img'];
