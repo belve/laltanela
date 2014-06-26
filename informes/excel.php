@@ -13,7 +13,10 @@ $nomfil=$_SESSION['nomfil'];
 $format=$_SESSION['format'];
 $paginas=$_SESSION['paginas'];
 $BOLDrang=$_SESSION['BOLDrang'];
+
+
 if(array_key_exists('angle', $_SESSION)){$angle=$_SESSION['angle'];}else{$angle=array();};
+if(array_key_exists('foto', $_SESSION)){$foto=$_SESSION['foto'];}else{$foto=array();};
 $debug=0;
 
 require_once '../Classes/PHPExcel.php';
@@ -166,6 +169,22 @@ foreach ($crang  as $rang => $value){$sheet->getStyle($rang)->applyFromArray(arr
 foreach ($angle as $cell => $angulo) {
 $sheet->getStyle($cell)->getAlignment()->setTextRotation($angulo);	
 }
+
+if(count($foto)>0){foreach ($foto as $fila => $dat) {foreach($dat as $colu => $val){
+
+
+$objDrawing = new PHPExcel_Worksheet_Drawing();
+$objDrawing->setName('PHPExcel logo');
+$objDrawing->setDescription('PHPExcel logo');
+$objDrawing->setPath($val);       // filesystem reference for the image file
+$objDrawing->setHeight(56);                 // sets the image height to 36px (overriding the actual image height); 
+$objDrawing->setCoordinates($colu . $fila);    // pins the top-left corner of the image to cell D24
+$objDrawing->setOffsetX(2);                // pins the top left corner of the image at an offset of 10 points horizontally to the right of the top-left corner of the cell
+$objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
+	
+	
+	
+}}}
 
 
 foreach ($Mrang as $rang => $value) {$sheet->mergeCells($rang);};

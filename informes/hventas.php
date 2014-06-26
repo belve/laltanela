@@ -7,6 +7,8 @@ require_once("basics.php");
 require_once("../db.php");
 require_once("../variables.php");
 
+$pathimages="c:/D/fotos/";
+
 $debug=0;
 
 $angle=array();
@@ -35,6 +37,7 @@ $codPOR=array();
 $paginas=array();
 $format=array();
 $BOLDrang=array();
+$foto=array();
 $fini="";
 $ffin="";$barrasIN="";
 
@@ -350,6 +353,29 @@ $fila++;
 
 $col=1;
 $grid[$fila][$colu[$col]]=$codigos[$codbar]; $col++;
+
+
+#######################333 fotos
+$file = fopen ("http://laltalena.com/ajax/getimage.php?codbarras=$codbar", "r");
+while (!feof ($file)) { $fotos = fgets ($file, 1024);};
+fclose($file);
+
+$dfotos=json_decode($fotos, true);
+$afotos=$dfotos['img'];
+$acodes=$dfotos['cod'];
+
+if(array_key_exists(0, $afotos)){
+$foti=$pathimages . $afotos[0];
+}else{
+$foti=$pathimages . "nodisp.jpg";	
+}
+
+$grid[$fila]['K']=$foti;
+//$foto[($fila-1)]['H']="dog1.jpg";
+$foto[($fila-1)]['H']=$foti;
+
+#######################333 fotos
+
 $dtot=$col; $tcant=0;  $col++;
 foreach ($tiendas as $idt => $nom) {
 		$cant="";
@@ -529,6 +555,7 @@ $BTrang['A1:S1']=1;
 $BTrang['A2:O2']=1;
 $BTrang['B3:O3']=1;
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['cgd'] = $cdg; 
 $_SESSION['grid'] = $grid; 
