@@ -1,6 +1,6 @@
 <?php
 
-function get_im($codbarras){
+function get_im($codbarras,$dbnivel){
 require_once("../variables.php");
 $nodet="";
 
