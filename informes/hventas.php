@@ -374,7 +374,7 @@ $acodes=$dfotos['cod'];
 if(array_key_exists(0, $afotos)){
 $foti=$pathimages . $afotos[0];
 }else{
-$foti=$pathimages . "nodisp.jpg";	
+$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
 }
 
 $grid[$fila]['K']=$foti;
