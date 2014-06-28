@@ -320,7 +320,7 @@ if(array_key_exists(0, $afotos)){
 $foti=$pathimages . $afotos[0];
 //$grid[$fila]['K']=$foti;
 //$foto[($fila-1)]['H']="dog1.jpg";
-$foto[($fila-1)]['k']=$foti;	
+$foto[($fila-1)]['K']=$foti;	
 	
 }else{
 //$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
