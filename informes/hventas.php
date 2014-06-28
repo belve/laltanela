@@ -365,10 +365,9 @@ fclose($file);
 $dfotos=json_decode($fotos, true);
 */
 
-if($mosF){
+if($mosF==1){
+	
 $dfotos=get_im($codbar,$dbnivel);
-
-
 $afotos=$dfotos['img'];
 $acodes=$dfotos['cod'];
 
@@ -377,9 +376,6 @@ $foti=$pathimages . $afotos[0];
 $grid[$fila]['K']=$foti;
 //$foto[($fila-1)]['H']="dog1.jpg";
 $foto[($fila-1)]['H']=$foti;	
-	
-}else{
-//$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
 }
 
 }
@@ -389,6 +385,7 @@ $grid[($fila+1)]['E']="P.COSTO:";
 $grid[($fila+2)]['E']="PVP:";
 $grid[($fila+3)]['E']="Fecha:";
 
+if (!$dbnivel->open()){die($dbnivel->error());};
 $idgrpc=substr($codbar, 0,1);
 $queryp= "select nombre from grupos where id=$idgrpc;"; 
 $dbnivel->query($queryp); 
