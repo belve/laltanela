@@ -382,6 +382,29 @@ $foto[($fila-1)]['H']=$foti;
 //$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
 }
 
+$grid[($fila)]['E']="GRUPO:";
+$grid[($fila+1)]['E']="P.COSTO:";
+$grid[($fila+2)]['E']="PVP:";
+$grid[($fila+3)]['E']="Fecha:";
+
+$idgrpc=substr($codbar, 0,1);
+$queryp= "select nombre from grupos where id=$idgrpc;"; 
+$dbnivel->query($queryp); 
+while ($row = $dbnivel->fetchassoc()){$idgrpc=$row['nombre'];};
+$grid[($fila)]['F']=$idgrpc;
+
+
+$queryp= "select preciocosto, pvp from articulos where codbarras=$codbar;"; 
+$dbnivel->query($queryp); 
+while ($row = $dbnivel->fetchassoc()){$ipcos=$row['preciocosto'];$ipvp=$row['pvp'];};
+$grid[($fila+1)]['F']=$ipcos;
+$grid[($fila+2)]['F']=$ipvp;
+
+$queryp= "select fecha from pedidos where tip=1 AND id_articulo in (select id from articulos where codbarras=$codbar);"; 
+$dbnivel->query($queryp); 
+while ($row = $dbnivel->fetchassoc()){$ifecha=$row['fecha'];};
+$grid[($fila+3)]['F']=$ifecha;
+
 
 
 #######################333 fotos

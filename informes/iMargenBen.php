@@ -250,7 +250,7 @@ $datt[$idt][$gr]['MGPP']=$MGPP;
 	
 }}
 
-	
+$foto=array();	
 $grid=array();
 $anchos=array();
 $align=array();

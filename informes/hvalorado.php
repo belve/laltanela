@@ -6,6 +6,7 @@ ini_set("memory_limit", "-1");
 require_once("basics.php");
 require_once("../db.php");
 require_once("../variables.php");
+require_once("gimagF.php");
 
 $debug=0;
 
@@ -299,6 +300,43 @@ $grid[$fila]['G']="VALOR VENTA";
 $grid[$fila]['H']="BENEFICIO"; 
 $grid[$fila]['I']="Bº UNITARIO"; 
 
+
+#######################333 fotos
+/*
+$file = fopen ("http://laltalena.com/ajax/getimage.php?codbarras=$codbar", "r");
+while (!feof ($file)) { $fotos = fgets ($file, 1024);};
+fclose($file);
+$dfotos=json_decode($fotos, true);
+*/
+
+
+$dfotos=get_im($codbar,$dbnivel);
+
+
+$afotos=$dfotos['img'];
+$acodes=$dfotos['cod'];
+
+if(array_key_exists(0, $afotos)){
+$foti=$pathimages . $afotos[0];
+$grid[$fila]['K']=$foti;
+//$foto[($fila-1)]['H']="dog1.jpg";
+$foto[($fila-1)]['H']=$foti;	
+	
+}else{
+//$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
+}
+
+
+
+
+#######################333 fotos
+
+
+
+
+
+
+
 $fila++;
 
 
@@ -335,7 +373,11 @@ $grid[$fila]['E']=$vcods[$cd]['vtda_V'] . " €";$sumVTDA_V=$sumVTDA_V+$vcods[$c
 $grid[$fila]['F']=$vcods[$cd]['vbru_V'] . " €";$sumVBRU_V=$sumVBRU_V+$vcods[$cd]['vbru_V'];
 $grid[$fila]['G']=$vcods[$cd]['valv_V'] . " €";$sumVALV_V=$sumVALV_V+$vcods[$cd]['valv_V'];
 $grid[$fila]['H']=$vcods[$cd]['bene_V'] . " €";$sumBENE_V=$sumBENE_V+$vcods[$cd]['bene_V'];
+if($vcods[$cd]['sti']>0){
 $grid[$fila]['I']=round(($vcods[$cd]['bene_V'])/($vcods[$cd]['sti']),2)  . " €";
+}else{
+$grid[$fila]['I']="";	
+}
 $fila++;
 
 $align['B' . $fila . ':' . 'I' . $fila]='C';
