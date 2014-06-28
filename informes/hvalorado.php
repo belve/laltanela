@@ -309,7 +309,7 @@ fclose($file);
 $dfotos=json_decode($fotos, true);
 */
 
-
+if($mosF){
 $dfotos=get_im($codbar,$dbnivel);
 
 
@@ -326,7 +326,7 @@ $foto[($fila)]['K']=$foti;
 //$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
 }
 
-
+}
 
 
 #######################333 fotos

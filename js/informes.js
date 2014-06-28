@@ -787,6 +787,12 @@ if(document.getElementById('refAgru')){
 if(document.getElementById('refAgru').checked){var agru=1;}
 }
 
+var mosF=0;
+if(document.getElementById('mosF')){
+if(document.getElementById('mosF').checked){var mosF=1;}
+}
+
+
 if(document.getElementById('fini')){
 var fini=document.getElementById('fini').value
 var ffin=document.getElementById('ffin').value
@@ -847,7 +853,9 @@ url = url
  + "&act=" + act 
  + "&actO=" + actO 
  + "&agru=" + agru 
+ + "&mosF=" + mosF 
  + '&listador=1'; 
+
 
 
 fini=fini.replace('dd/mm/aaaa','');

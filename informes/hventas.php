@@ -365,7 +365,7 @@ fclose($file);
 $dfotos=json_decode($fotos, true);
 */
 
-
+if($mosF){
 $dfotos=get_im($codbar,$dbnivel);
 
 
@@ -380,6 +380,8 @@ $foto[($fila-1)]['H']=$foti;
 	
 }else{
 //$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
+}
+
 }
 
 $grid[($fila)]['E']="GRUPO:";
