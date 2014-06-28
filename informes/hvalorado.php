@@ -318,9 +318,9 @@ $acodes=$dfotos['cod'];
 
 if(array_key_exists(0, $afotos)){
 $foti=$pathimages . $afotos[0];
-$grid[$fila]['K']=$foti;
+//$grid[$fila]['K']=$foti;
 //$foto[($fila-1)]['H']="dog1.jpg";
-$foto[($fila-1)]['H']=$foti;	
+$foto[($fila-1)]['k']=$foti;	
 	
 }else{
 //$foti="dog1.jpg";#$pathimages . "nodisp.jpg";	
