@@ -146,6 +146,7 @@ $cdg[$codbar]=1;
 }}}}}
 
 
+$foto=array();
 $angle=array();
 $gridD=array();
 $anchos=array();
@@ -253,6 +254,7 @@ $anchos['H']=11;
 $anchos['I']=11;
 $anchos['J']=11;
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['BOLDrang']=$BOLDrang;
 $_SESSION['cgd'] = $cdg; 

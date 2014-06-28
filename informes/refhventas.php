@@ -9,6 +9,7 @@ require_once("../variables.php");
 
 $debug=0;
 
+$foto=array();
 $angle=array();
 $grid=array();
 $anchos=array();
@@ -583,6 +584,7 @@ $BTrang['A1:S1']=1;
 $BTrang['A2:O2']=1;
 $BTrang['B3:O3']=1;
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['cgd'] = $cdg; 
 $_SESSION['grid'] = $grid; 

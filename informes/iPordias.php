@@ -61,6 +61,7 @@ $datos[$idt][$fecha]=$qty;
 
 if (!$dbn->close()){die($dbn->error());};
 
+$foto=array();
 $angle=array();
 $grid=array();
 $anchos=array();
@@ -157,6 +158,7 @@ $anchos['AH']=15;
 
 if(count($grid)>0){
 
+$_SESSION['foto']=$foto;
 $_SESSION['BOLDrang']=$BOLDrang;
 $_SESSION['angle']=$angle;
 $_SESSION['grid'] = $grid; 

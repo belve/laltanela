@@ -120,6 +120,7 @@ $act=1;$actO='A';
 
 
 
+$foto=array();
 $angle=array();
 $gridD=array();
 $anchos=array();
@@ -232,6 +233,7 @@ $anchos['H']=15;
 $anchos['I']=15;
 
 
+$_SESSION['foto']=$foto;
 $_SESSION['BOLDrang']=$BOLDrang;
 $_SESSION['angle']=$angle;
 $_SESSION['grid'] = $grid; 

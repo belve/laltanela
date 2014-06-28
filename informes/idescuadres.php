@@ -252,6 +252,7 @@ if (!$dbBAK->close()){die($dbBAK->error());};
 
 
 
+$foto=array();
 $angle=array();
 $gridD=array();
 $anchos=array();
@@ -396,6 +397,7 @@ $anchos['J']=8;
 $anchos['K']=4;
 $anchos['M']=10;
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['cgd'] = $cdg; 
 $_SESSION['grid'] = $grid; 

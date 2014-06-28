@@ -69,6 +69,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
+$foto=array();
 $angle=array();
 $grid=array();
 $anchos=array();
@@ -132,6 +133,7 @@ $anchos['E']=15;
 
 if(count($grid)>0){
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['BOLDrang']=$BOLDrang;
 $_SESSION['grid'] = $grid; 

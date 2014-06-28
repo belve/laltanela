@@ -12,6 +12,7 @@ $pathimages="c:/D/fotos_altanela/";
 
 $debug=0;
 
+$foto=array();
 $angle=array();
 $grid=array();
 $anchos=array();

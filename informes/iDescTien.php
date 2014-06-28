@@ -87,6 +87,7 @@ $datos[$idt]['dm']=$dm;
 if (!$dbn->close()){die($dbn->error());};
 
 
+$foto=array();
 $grid=array();
 $anchos=array();
 $align=array();
@@ -131,6 +132,7 @@ $BTrang		['A' . $fila . ':E' . $fila]=1;
 
 if(count($datos)>0){
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['BOLDrang']=$BOLDrang;
 $_SESSION['grid'] = $grid; 

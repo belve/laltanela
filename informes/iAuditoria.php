@@ -191,6 +191,7 @@ if (!$dbn->close()){die($dbn->error());};
 
 
 
+$foto=array();
 $angle=array();
 $grid=array();
 $anchos=array();
@@ -394,6 +395,7 @@ $hoy=date('Y') . date('m') . date('d');
 
 if(count($grid)>0){
 
+$_SESSION['foto']=$foto;
 $_SESSION['angle']=$angle;
 $_SESSION['BOLDrang']=$BOLDrang;
 //$_SESSION['cgd'] = $cdg; 
