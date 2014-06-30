@@ -745,9 +745,9 @@ $.post("/ajax/ordenacods.php",param, function( data ) {
 
 data=data.replace(/(\r\n|\n|\r)/gm,"")	
 if(w==1){//innerDoc.getElementById('art_' + id_rebaja).value
-		window.top.listArts[id_rebaja]=data;		 	if(window.debug ==1) {console.log('L556 : DesdeF REB_ACT|(art_' + id_rebaja + ') : '+ window.top.listArts[id_rebaja]);};}; //innerDoc.getElementById('art_' + id_rebaja).value
+		window.top.listArts[id_rebaja]=data + " ";		 	if(window.debug ==1) {console.log('L556 : DesdeF REB_ACT|(art_' + id_rebaja + ') : '+ window.top.listArts[id_rebaja]);};}; //innerDoc.getElementById('art_' + id_rebaja).value
 if(w==2){//document.getElementById('art_' + id_rebaja).value
-		window.top.listArts[id_rebaja]=data;			if(window.debug ==1) {console.log('L556 : DesdeD REB_ACT|(art_' + id_rebaja + ') : '+ window.top.listArts[id_rebaja]);};}; //document.getElementById('art_' + id_rebaja).value	
+		window.top.listArts[id_rebaja]=data + " ";			if(window.debug ==1) {console.log('L556 : DesdeD REB_ACT|(art_' + id_rebaja + ') : '+ window.top.listArts[id_rebaja]);};}; //document.getElementById('art_' + id_rebaja).value	
 	
 
 });	
