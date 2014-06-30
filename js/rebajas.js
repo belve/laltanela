@@ -86,7 +86,7 @@ $.getJSON(url, function(data) {
 $.each(data, function(key, val) {
 
 var datos=new Array();
-var limp=arts.replace(key,'');
+var limp=arts.replace(' ' + key + ' ','');
 
 if(limp==arts){
 arts=arts + " " + key;
