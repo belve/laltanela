@@ -151,6 +151,7 @@ art=arts.split(' ');
 for (var i = 0; i < art.length; i++) {if(art[i]>0){count++;
 idA=art[i]; 	
 
+
 idC  =innerDoc.getElementById(id + '_c_' + idA).value;
 idpvp=innerDoc.getElementById(id + '_p_' + idA).value;
 idpre=innerDoc.getElementById(id + '_r_' + idA).value;
@@ -245,13 +246,18 @@ function borraselR(){
 if(window.debug ==1) {console.log('L226 :borraselR();');};	
 var id=document.getElementById('idrebaja').value
 
+//console.log('id='+id);
+
 var arts=' ' + window.top.listArts[id]; //innerDoc.getElementById('art_' + id).value;
+//console.log('arts='+arts);
 
 var iframe = document.getElementById('articulos');
 var innerDoc2 = iframe.contentDocument || iframe.contentWindow.document;
 
 	
 var select=window.top.select[id]; //innerDoc2.getElementById('select').value;	
+//console.log('select='+select);
+
 
 var sels=select.split(' ');
 var count=0;
@@ -259,13 +265,15 @@ var count=0;
 
 for (var i = 0; i < sels.length; i++){
 if(innerDoc2.getElementById('c_' + sels[i])){
+
+if(window.debug ==1) {console.log('busco='+ 'c_' + sels[i]);};
 	
 count++;
 var cod=innerDoc2.getElementById('c_' + sels[i]).value;
-if(window.debug ==1) {console.log('arts=|'+ arts + '|');};
-arts=arts.replace(' ' + cod,'');
-innerDoc2.getElementById("oc_" +  cod).remove();
 
+arts=arts.replace(' ' + cod + ' ',' ');
+innerDoc2.getElementById("oc_" +  cod).remove();
+if(window.debug ==1) {console.log('borro: '  + cod + ' :arts2=|'+ arts + '|');};
 }}
 
 
