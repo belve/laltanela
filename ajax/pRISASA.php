@@ -3,13 +3,18 @@ require_once("../db.php");
 require_once("../variables.php");
 
 
-
+$porc=10;
 
 foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";   eval($asignacion);};
 
-$cc=1; $lids="";  $qert="";
+
+$delT=round((100/$porc),0);
+
+
+$cc=0; $lids="";  $qert="";
 if (!$dbnivel->open()){die($dbnivel->error());};
-$queryp= "select * from tickets where id > $iid ORDER BY id ASC limit 1000;"; 
+$queryp= "select * from tickets where id > $iid AND id <=$fid ORDER BY id ASC limit 300;"; 
+
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 $id=$row['id'];
@@ -21,14 +26,16 @@ $ho=$row['hora'];
 $imp=$row['importe'];
 $des=$row['descuento'];	
 
-if(!array_key_exists($idt, $tnoRISASA)){
+
+
+if(!array_key_exists($idt, $tnoRISASA)){ 
 $cc++;
 
 if($cc<$delT){
 $qert.="($idt,'$idtt',$ide,'$fe','$ho','$imp','$des'),";	
 $lids.=$id . ","; 
 }else{
-$cc=1;
+$cc=0;
 //$dat[$id]="($idt,'--',$ide,'$fe','$ho','$imp','$des')";		
 }
 
@@ -47,6 +54,8 @@ $lids=substr($lids,0,-1);
 
 $qerdt="";	
 $queryp= "select * from ticket_det where idt IN ($lids);"; 
+
+
 $dbnivel->query($queryp); 
 while ($row = $dbnivel->fetchassoc()){
 	         
@@ -71,7 +80,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
-$dbnivel2=new DB('192.168.1.11','edu','admin','risasa');
+$dbnivel2=new DB('192.168.1.11','edu','admin','laltalena_a');
 if (!$dbnivel2->open()){die($dbnivel2->error());};
 $qert=substr($qert,0,-1);
 $queryp= "INSERT INTO tickets (id_tienda,id_ticket,id_empleado,fecha,hora,importe,descuento) VALUES $qert;"; 
