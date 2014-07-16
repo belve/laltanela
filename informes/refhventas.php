@@ -348,7 +348,7 @@ $cdg=array();
 if(count($codPOR)>0){
 if($actO=='A'){asort($codPOR);}else{arsort($codPOR);}
 foreach ($codPOR as $codbar => $portc){
-$cdg[$codigosREF[$codbar]]=1;	
+$cdg[$codbar]=1;	
 }}}
 
 
@@ -359,7 +359,7 @@ $cdg=array();
 if(count($codVEND)>0){
 if($actO=='A'){asort($codVEND);}else{arsort($codVEND);}
 foreach ($codVEND as $codbar => $portc){
-$cdg[$codigosREF[$codbar]]=1;	
+$cdg[$codbar]=1;	
 }}}
 
 
@@ -369,7 +369,7 @@ $cdg=array();
 if(count($codSTOK)>0){
 if($actO=='A'){asort($codSTOK);}else{arsort($codSTOK);}
 foreach ($codSTOK as $codbar => $portc){
-$cdg[$codigosREF[$codbar]]=1;	
+$cdg[$codbar]=1;	
 }}}
 
 
