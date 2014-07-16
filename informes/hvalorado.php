@@ -310,7 +310,7 @@ $dfotos=json_decode($fotos, true);
 */
 
 if($mosF){
-$dfotos=get_im($codigos[$cd],$dbnivel);
+$dfotos=get_im($cd,$dbnivel);
 
 
 $afotos=$dfotos['img'];
