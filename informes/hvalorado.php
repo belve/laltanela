@@ -49,7 +49,7 @@ $ffin=substr($ffin, 6,4) . "-" . substr($ffin, 3,2) . "-" . substr($ffin, 0,2);
 
 $peds="";$cods="";$codigos=array();$vendidos=array();$cord=array();
 
-if($agru==1){$mosF=1;}
+if($agru==1){$mosF=0;}
 
 
 
