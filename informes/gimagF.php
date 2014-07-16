@@ -16,7 +16,7 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "select id_proveedor, 
 (select nomcorto from proveedores where proveedores.id=articulos.id_proveedor) as proveedor, 
 refprov from articulos where codbarras=$codbarras;";
-$dbnivel->query($queryp); echo $queryp;
+$dbnivel->query($queryp); 
 while ($row = $dbnivel->fetchassoc()){
 $id_proveedor=$row['id_proveedor'];
 $refprov=$row['refprov'];
