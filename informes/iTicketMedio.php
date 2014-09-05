@@ -54,7 +54,7 @@ if (!$dbn->open()){die($dbn->error());};
 $queryp="select id_articulo, 
 sum(cantidad) as Qty, 
 (sum(cantidad)*(SELECT preciocosto FROM articulos WHERE articulos.id=pedidos.id_articulo )) as Sqty 
-from pedidos where fecha <= '$ffin' AND fecha >= '$fini' GROUP BY id_articulo;";
+from pedidos where fecha <= '$ffin' AND fecha >= '$fini'  AND estado NOT LIKE '-'  GROUP BY id_articulo;";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
 while ($row = $dbn->fetchassoc()){

@@ -345,6 +345,10 @@ url = url
  + '&listador=1'; 
 document.getElementById('reloj').setAttribute("style", "visibility:visible;");
 document.getElementById('status').innerHTML="";
+document.getElementById('pcm').innerHTML="";
+document.getElementById('pvm').innerHTML="";
+document.getElementById('upo').innerHTML="";
+
 	$.getJSON(url, function(data) {
 	$.each(data, function(key, val) {
 	if(key=='tm'){
