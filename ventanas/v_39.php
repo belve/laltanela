@@ -90,20 +90,38 @@ window.top.tselALL	=1;
 	
 <div style="clear: both;"></div>
 
-<div class="boton" style=" margin-left: 2px; width: 100px;"; onclick="javascript:informeTM();" >Ticket medio >> </div>
+<div class="boton" style=" margin-left: 2px; width: 100px;"; onclick="javascript:informeTM();" >Calcular >> </div>
 </div>
 
 
 
 
+<div id="reloj" class="relojCalc posreltm" style="visibility: hidden;"><img src="/iconos/loading1.gif"></div>
 
-<div style="float: left; position: relative; margin-left: 40px; margin-top: 34px;">
-	 
-	 <div id="reloj" class="relojCalc posreltm" style="visibility: hidden;"><img src="/iconos/loading1.gif"></div>
-	 <div id="status" style="border:1px solid #888888; font-size: 19px;    height: 23px;    left: -17px;    padding: 13px;    position: relative;    text-align: center;    text-decoration: blink;    top: 42px;    width: 57px;"></div>
-	 
 
+<div style="float: left; position: absolute; left: 362px; top: 14px;">
+<div class="tMly">Ticket Medio</div>
+<div id="status" style="border:1px solid #888888; font-size: 15px;    height: 23px; padding: 13px;    position: relative;    text-align: center;    text-decoration: blink;     width: 57px;"></div>
 </div>
+
+<div style="float: left; position: absolute; left: 462px; top: 14px;">
+<div class="tMly">P.Costo Medio:</div>
+<div id="pcm" style="border:1px solid #888888; font-size: 15px;    height: 23px; padding: 13px;    position: relative;    text-align: center;    text-decoration: blink;     width: 57px;"></div>
+</div>
+
+
+<div style="float: left; position: absolute; left: 362px; top:84px;">
+<div class="tMly">P.Venta Medio</div>
+<div id="pvm" style="border:1px solid #888888; font-size: 15px;    height: 23px; padding: 13px;    position: relative;    text-align: center;    text-decoration: blink;     width: 57px;"></div>
+</div>
+
+<div style="float: left; position: absolute; left: 462px; top: 84px;">
+<div class="tMly">UPO:</div>
+<div id="upo" style="border:1px solid #888888; font-size: 15px;    height: 23px; padding: 13px;    position: relative;    text-align: center;    text-decoration: blink;     width: 57px;"></div>
+</div>
+
+
+
 
 
 <div class="timer" id="timer" style="visibility: hidden; left: 47%; top:50%;"><img src="/iconos/loading1.gif"></div>

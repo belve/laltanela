@@ -351,6 +351,19 @@ document.getElementById('status').innerHTML="";
 	document.getElementById('status').innerHTML=val + " €";
 	}
 	
+	if(key=='pcm'){
+	document.getElementById('pcm').innerHTML=val + " €";
+	}
+
+	if(key=='pvm'){
+	document.getElementById('pvm').innerHTML=val + " €";
+	}
+	
+	
+	if(key=='upo'){
+	document.getElementById('upo').innerHTML=val;
+	}
+	
 	});
 	});	
 document.getElementById('reloj').setAttribute("style", "visibility:hidden;");

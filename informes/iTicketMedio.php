@@ -45,6 +45,64 @@ $ffin=substr($ffin, 6,4) . "-" . substr($ffin, 3,2) . "-" . substr($ffin, 0,2);
 
 
 
+$db='laltalena';
+$dbn=new DB('192.168.1.11','edu','admin',$db);
+
+$sum['pc']=0;
+$sum['q']=0;
+if (!$dbn->open()){die($dbn->error());};
+$queryp="select id_articulo, 
+sum(cantidad) as Qty, 
+(sum(cantidad)*(SELECT preciocosto FROM articulos WHERE articulos.id=pedidos.id_articulo )) as Sqty 
+from pedidos where fecha <= '$ffin' AND fecha >= '$fini' GROUP BY id_articulo;";
+$dbn->query($queryp);if($debug){echo "$queryp \n\n";};
+echo $dbn->error();
+while ($row = $dbn->fetchassoc()){
+
+$sum['pc']=$sum['pc']+ $row['Sqty'];	
+$sum['q']=$sum['q']+ $row['Qty'];
+	
+
+}
+
+$res['pcm']=number_format(($sum['pc']/$sum['q']),2,',','.');
+
+
+
+$queryp="select (select sum(importe) from tickets where fecha <= '$ffin' AND fecha >= '$fini') /
+ (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini') as pvm;";
+$dbn->query($queryp);if($debug){echo "$queryp \n\n";};
+echo $dbn->error();
+while ($row = $dbn->fetchassoc()){
+
+$res['pvm']=number_format($row['pvm'],2,',','.');
+	
+
+}
+
+
+
+
+$queryp="select (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini') / 
+(select count(*) from tickets where fecha <= '$ffin' AND fecha >= '$fini') as upo;
+";
+$dbn->query($queryp);if($debug){echo "$queryp \n\n";};
+echo $dbn->error();
+while ($row = $dbn->fetchassoc()){
+
+$res['upo']=number_format($row['upo'],3,',','.');
+	
+
+}
+
+
+
+
+if (!$dbn->close()){die($dbn->error());};
+
+
+
+
 
 
 

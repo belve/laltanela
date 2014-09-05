@@ -392,8 +392,14 @@ height:15px; width:96%; padding-left:3px; cursor:pointer;
     text-align: center;
     width: 31px;}
 
-.posreltm {    left: -17px;
-    position: relative;
-    top: 79px;}
+.tMly{
+
+	
+	
+}
+
+.posreltm { left: 247px;
+    position: absolute;
+    top: 151px;}
 
 .norisasa {margin-bottom: 14px; width:126px; height:29px; }

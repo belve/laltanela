@@ -94,7 +94,7 @@ $(window).keydown(function(evt) {
         	<li onclick="javascript:owin('v_36','Porcentaje de ventas','');"><a>Porcentaje de ventas</a></li>
         	<li onclick="javascript:owin('v_37','Ventas por tienda','');"><a>Ventas por tienda</a></li>
         	<li onclick="javascript:owin('v_38','Márgenes de beneficio','');"><a>Márgenes de beneficio</a></li>
-        	<li onclick="javascript:owin('v_39','Ticket medio','');"><a>Ticket medio</a></li>
+        	<li onclick="javascript:owin('v_39','KPIs','');"><a>KPIs</a></li>
         	<li onclick="javascript:owin('v_25','Descuentos en tiendas','');"><a>Descuentos en tiendas</a></li>
         	<li onclick="javascript:owin('v_26','Facturación franquicias','');"><a>Facturación franquicias</a></li>
         	
