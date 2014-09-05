@@ -65,8 +65,11 @@ $sum['q']=$sum['q']+ $row['Qty'];
 
 }
 
+if($sum['q']>0){
 $res['pcm']=number_format(($sum['pc']/$sum['q']),2,',','.');
-
+}else{
+$res['pcm']="--";	
+}
 
 
 $queryp="select (select sum(importe) from tickets where fecha <= '$ffin' AND fecha >= '$fini') /
