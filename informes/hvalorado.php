@@ -24,6 +24,7 @@ $id_proveedor="";$id_grupo="";$id_subgrupo="";$id_color="";$codigo="";$pvp="";$d
 $yalistados="";
 $detalles="";
 $comentarios="";
+$limite=0;
 $ord=1;
 $tab=1;
 $arts=array();
@@ -288,12 +289,19 @@ $crang=array();
 $Mrang=array();
 $BTrang=array();
 
-$fila=5;$cuenf=0;
+$fila=5;$cuenf=0;$ccl=0;
 
 $sumSTI=0;$sumSTC=0;$sumVTDA=0;$sumVBRU=0;
 $sumSTI_V=0;$sumSTC_V=0;$sumVTDA_V=0;$sumVBRU_V=0;$sumVALV_V=0;$sumBENE_V=0;
+
+
 if(count($cdg)>0){
-foreach ($cdg as $cd => $point) {$fila++;$cuenf++;
+foreach ($cdg as $cd => $point) {$ccl++;
+if(($ccl <= $limite)||(!$limite)){ 
+		
+$fila++;$cuenf++;
+
+
 if($cuenf >= 8){$cuenf=0;$paginas[$fila+4]=1;}	
 
 $align['A' . $fila . ':' . 'I' . $fila]='C';
@@ -396,7 +404,7 @@ $grid[$fila]['F']=$vcods[$cd]['vbru_V_P'] . " %";
 
 $fila++;
 
-}}
+}}}
 $fila=$fila+5;
 
 ###################### totales

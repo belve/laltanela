@@ -48,17 +48,22 @@ function cajtie(idt){
 	
 if(window.top.tsel[idt]==0){window.top.tsel[idt]=1;}else{window.top.tsel[idt]=0;};	
 
-var tie=window.top.tsel;
+var tie=window.top.tsel; var tselcs="";
 for (var i = 0; i < tie.length; i++) {if(document.getElementById('idt_' + i)){	
 	
 	if(tie[i]==0){
 		document.getElementById('idt_' + i).setAttribute("style", "background-color:white;");
 		}else{
+		tselcs=tselcs + i + ",";	
 		document.getElementById('idt_' + i).setAttribute("style", "background-color:#8DC29E;");	
 		}
 
 	
 }}	
+
+if(document.getElementById('lempS')){
+listEMPtie(tselcs);	
+}
 	
 }
 
@@ -67,6 +72,8 @@ for (var i = 0; i < tie.length; i++) {if(document.getElementById('idt_' + i)){
 
 
 function tselALL(){
+
+	
 if(window.debug ==1) {console.log('window.top.tselALL: ' + window.top.tselALL); };
 if(window.debug ==1) {console.log('window.top.tsel: '); console.info(window.top.tsel); };	
 
@@ -330,6 +337,10 @@ var ffin=document.getElementById('ffin').value
 fini=fini.replace('dd/mm/aaaa','');
 ffin=ffin.replace('dd/mm/aaaa','');
 
+var e = document.getElementById("lempS");
+var empleS= e.value;
+
+
 if((fini=="")||(ffin=="")){
 alert('Debe introducir un rango de fechas');	
 }else{
@@ -341,6 +352,7 @@ url = url
  + "&fini=" + fini 
  + "&ffin=" + ffin  
  + "&ttss=" + ttss 
+ + "&empleS=" + empleS 
  + "&risase=" + window.top.bRISASA  
  + '&listador=1'; 
 document.getElementById('reloj').setAttribute("style", "visibility:visible;");
@@ -809,6 +821,12 @@ if(document.getElementById('mosF')){
 if(document.getElementById('mosF').checked){var mosF=1;}
 }
 
+var limite=0;
+if(document.getElementById('limite')){
+var limite=document.getElementById('limite').value;
+}
+
+
 
 if(document.getElementById('fini')){
 var fini=document.getElementById('fini').value
@@ -871,6 +889,7 @@ url = url
  + "&actO=" + actO 
  + "&agru=" + agru 
  + "&mosF=" + mosF 
+ + "&limite=" + limite 
  + '&listador=1'; 
 
 
@@ -890,6 +909,21 @@ getDATA(url);
 }
 
 
+
+
+function listEMPtie(tselcs){
+	
+var url="/ajax/listEMPtie.php?tiend=" + tselcs;
+$.getJSON(url, function(data) {
+$.each(data, function(key, val) {
+
+if(key=='opt'){document.getElementById('lempS').innerHTML=val;}
+
+
+	});
+	});	
+	
+}
 
 
 function getDATA(url){$.ajaxSetup({'async': false});

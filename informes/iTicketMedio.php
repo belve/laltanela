@@ -43,6 +43,19 @@ $frqcia=1;
 $fini=substr($fini, 6,4) . "-" . substr($fini, 3,2) . "-" . substr($fini, 0,2);
 $ffin=substr($ffin, 6,4) . "-" . substr($ffin, 3,2) . "-" . substr($ffin, 0,2);
 
+$fEMP="";
+if($empleS){
+$fEMP=" AND id_empleado=$empleS ";	
+}
+
+
+$fEMP_D="";
+if($empleS){
+$fEMP_D=" AND idt IN (select id FROM tickets WHERE id_empleado=$empleS AND fecha <= '$ffin' AND fecha >= '$fini')";	
+}
+
+
+
 
 
 $db='laltalena';
@@ -72,8 +85,8 @@ $res['pcm']="--";
 }
 
 
-$queryp="select (select sum(importe) from tickets where fecha <= '$ffin' AND fecha >= '$fini') /
- (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini') as pvm;";
+$queryp="select (select sum(importe) from tickets where fecha <= '$ffin' AND fecha >= '$fini' $fEMP) /
+ (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) as pvm;";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
 while ($row = $dbn->fetchassoc()){
@@ -86,8 +99,8 @@ $res['pvm']=number_format($row['pvm'],2,',','.');
 
 
 
-$queryp="select (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini') / 
-(select count(*) from tickets where fecha <= '$ffin' AND fecha >= '$fini') as upo;
+$queryp="select (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) / 
+(select count(*) from tickets where fecha <= '$ffin' AND fecha >= '$fini' $fEMP) as upo;
 ";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
@@ -115,7 +128,7 @@ $dbn=new DB('192.168.1.11','edu','admin',$db);
 if (!$dbn->open()){die($dbn->error());};
 $queryp="select count(*) as nt, sum(importe) as st, (sum(importe)/count(*)) as tm 
 from tickets where fecha >= '$fini' AND fecha <= '$ffin' AND 
-id_tienda IN ($ttss) AND importe >0; ";
+id_tienda IN ($ttss) AND importe >0 $fEMP ;";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
 while ($row = $dbn->fetchassoc()){

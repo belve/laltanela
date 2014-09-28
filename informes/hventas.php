@@ -26,6 +26,7 @@ $id_proveedor="";$id_grupo="";$id_subgrupo="";$id_color="";$codigo="";$pvp="";$d
 $yalistados="";
 $detalles="";
 $comentarios="";
+$limite=0;
 $ord=1;
 $tab=1;
 $arts=array();
@@ -335,9 +336,14 @@ $fila=5;
 
 $flini=$fila+1;
 $cuenf=0;
+$ccl=0;
 
 if(count($cdg)>0){
-foreach ($cdg as $codbar => $point) {$fila++;$cuenf++;
+foreach ($cdg as $codbar => $point) {$ccl++;
+if(($ccl <= $limite)||(!$limite)){ 	
+	
+		
+$fila++;$cuenf++;
 
 if($cuenf >= 8){$cuenf=0;$paginas[$fila+4]=1;}	
 
@@ -500,7 +506,7 @@ foreach ($tiendas as $idt => $nom) {
 
 
 
-}}
+}}}
 
 $fila=$fila+5;
 $col=3;

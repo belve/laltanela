@@ -60,6 +60,13 @@ window.top.tselALL	=1;
 		<?php echo $cajt; ?>		
 </div>
 
+<div style="position:absolute; top:60px; left:-1px;">
+<select id="lempS" style="width:176px; font-size: 12px; font-family:Arial">
+<option value="0">Todos</option>	
+</select>	
+</div>
+
+
 <div style="float: left; position: relative; margin-left: 20px;   margin-top: 14px;">	
 	
 	

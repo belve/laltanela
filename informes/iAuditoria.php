@@ -48,7 +48,7 @@ if($porcen < 10){$porcen="0" . $porcen;};
 $porcen="0." . $porcen;
 
 if($i<=2){
-$db='laltanela';
+$db='laltalena';
 $dbn=new DB('192.168.1.11','edu','admin',$db);
 if (!$dbn->open()){die($dbn->error());};	
 $queryp= "select codbarras, preciocosto from articulos;";

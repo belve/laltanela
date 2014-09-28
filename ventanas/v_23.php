@@ -95,7 +95,7 @@ function cargasubgrupo (id) {
 	<table>
 		<tr>
 			<td>Proveedor</td>
-			<td><select id="2" class="medio">
+			<td><select id="2" class="grande">
 				<?php echo $htmlProv; ?>
 			</select></td>
 		</tr>
