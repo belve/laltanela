@@ -15,7 +15,7 @@ $borros=array();
 
 $valores['opt']="<option value='0'>Todos</option>";
 
-$queryp= "select id, nombre, apellido1, apellido2 from empleados where id_tienda IN (SELECT id_tienda FROM tiendas where id in ($TSEL) );";
+$queryp= "select id, nombre, apellido1, apellido2 from empleados where trabajando='S' AND id_tienda IN (SELECT id_tienda FROM tiendas where id in ($TSEL) );";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 $id=$row['id']; $nom=$row['nombre'] . " " . $row['apellido1'] . " " . $row['apellido2'];
