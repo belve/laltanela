@@ -62,6 +62,9 @@ if(($desde)&&(!$hasta)){$options .=" AND codigo >= $desde";};
 
 if($detalles){$options .=" AND detalles LIKE '%$detalles%'";};
 if($comentarios){$options .=" AND comentarios LIKE '%$comentarios%'";};
+//if($refp){$options .=" AND id_proveedor IN (SELECT id FROM proveedores WHERE nombre LIKE '%$refp%')";};
+if($refp){$options .=" AND refprov LIKE '%$refp%'";};
+
 
 
 $options=substr($options, 4,strlen($options));

@@ -125,8 +125,8 @@ function informeM(t){
 var temp=document.getElementById('temp').value
 temp=temp.replace('t/aa','');
 
-
-if((temp=="")||(temp.length<4)){
+//if((temp=="")||(temp.length<4)){
+if(temp==""){
 alert('Debe introducir una temporada válida');	
 }else{
 
@@ -799,17 +799,18 @@ getDATA(url);
 function informe(codigo){
 
 
-var prov=document.getElementById(2).value
-var grup=document.getElementById(3).value
-var subg=document.getElementById(4).value
-var colo=document.getElementById(5).value
-var codi=document.getElementById(6).value
-var pvp=document.getElementById(7).value
-var desd=document.getElementById(8).value
-var hast=document.getElementById(9).value
-var temp=document.getElementById(10).value
-var detalles=document.getElementById(11).value
-var comentarios=document.getElementById(12).value
+var prov=document.getElementById(2).value;
+var grup=document.getElementById(3).value;
+var subg=document.getElementById(4).value;
+var colo=document.getElementById(5).value;
+var codi=document.getElementById(6).value;
+var pvp=document.getElementById(7).value;
+var desd=document.getElementById(8).value;
+var hast=document.getElementById(9).value;
+var temp=document.getElementById(10).value;
+var detalles=document.getElementById(11).value;
+var comentarios=document.getElementById(12).value;
+var refp=document.getElementById(13).value;
 
 var agru=0;
 if(document.getElementById('refAgru')){
@@ -888,7 +889,8 @@ url = url
  + "&act=" + act 
  + "&actO=" + actO 
  + "&agru=" + agru 
- + "&mosF=" + mosF 
+ + "&mosF=" + mosF
+ + "&refp=" + refp  
  + "&limite=" + limite 
  + '&listador=1'; 
 

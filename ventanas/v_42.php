@@ -49,7 +49,14 @@ require_once("../variables.php");
 <div style="float: left; position: relative; margin-left: 5px;   margin-top: 5px;">	
 	
 	<div style="color: #444444;">Temporada:</div>
-	<div style=""> <input value="t/aa" type="text" class="medio" id="temp" style="color:#bbbbbb;" onfocus="javascript:dlT(this.id);" onkeyup="javascript:tabT(this.id);"></div>
+	<div style=""> <input value="" type="text" class="medio" id="temp"></div>
+	
+	
+	<!--
+	   <div style=""> <input value="t/aa" type="text" class="medio" id="temp" style="color:#bbbbbb;" onfocus="javascript:dlT(this.id);" onkeyup="javascript:tabT(this.id);"></div>
+    --> 
+	
+	
 	
 	<div class="boton" style=" margin-left: 2px; width: 81px;"; onclick="javascript:informeM('C');" >Compras >> </div>
 	<div class="boton" style=" margin-left: 2px; width: 81px;"; onclick="javascript:informeM('S');" >Almacén >> </div>

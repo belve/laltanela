@@ -103,6 +103,7 @@ $queryp= "select * from articulos where $options;";
 $queryp= "select * from articulos where congelado=0;";
 }	
 		
+        
 $dbnivel->query($queryp);if($debug){echo "$queryp \n\n";};
 while ($row = $dbnivel->fetchassoc()){
 $id_articulo=$row['id']; $cd=$row['codbarras']; $refprov=$row['refprov'];
@@ -568,6 +569,8 @@ $anchos['B']=7;
 
 for ($i=3; $i <= count($tiendas)+3 ; $i++) {$anchos[$colu[$i]]=7;};
 
+$anchos[$colu[count($tiendas)+3]]=11;
+$anchos[$colu[count($tiendas)+4]]=11;
 
 $align['A' . $flini . ':' . 'A' . $flfin]='C';
 $align['B' . $flini . ':' . 'B' . $flfin]='C';
