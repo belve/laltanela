@@ -810,7 +810,12 @@ var hast=document.getElementById(9).value;
 var temp=document.getElementById(10).value;
 var detalles=document.getElementById(11).value;
 var comentarios=document.getElementById(12).value;
+
+if(document.getElementById(13)){
 var refp=document.getElementById(13).value;
+}else{
+var refp="";	
+}
 
 var agru=0;
 if(document.getElementById('refAgru')){
