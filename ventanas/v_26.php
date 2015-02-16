@@ -6,7 +6,7 @@ require_once("../functions/gettiendas.php");
 
 
 $cajt="";
-foreach ($franq as $idt => $p) {$nomt=$tiendas[$idt];
+foreach ($tiendas as $idt => $p) {$nomt=$tiendas[$idt];
 $cajt.="<div class='cajt' id='idt_$idt' onclick='javascript:cajtie($idt);' ondblclick='tselALL();' style='background-color:#8DC29E;'>$nomt</div> <script>window.top.tsel[$idt]=1;</script> ";	
 }
 $cajt.="<div style='clear:both;'></div>";

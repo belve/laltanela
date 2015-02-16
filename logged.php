@@ -96,7 +96,7 @@ $(window).keydown(function(evt) {
         	<li onclick="javascript:owin('v_38','Márgenes de beneficio','');"><a>Márgenes de beneficio</a></li>
         	<li onclick="javascript:owin('v_39','KPIs','');"><a>KPIs</a></li>
         	<li onclick="javascript:owin('v_25','Descuentos en tiendas','');"><a>Descuentos en tiendas</a></li>
-        	<li onclick="javascript:owin('v_26','Facturación franquicias','');"><a>Facturación franquicias</a></li>
+        	<li onclick="javascript:owin('v_26','Facturación mercancía','');"><a>Facturación mercancía</a></li>
         	
         </ul>
     </li>

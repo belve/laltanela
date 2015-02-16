@@ -49,8 +49,9 @@ $ffin=substr($mes, 3,4) . "-" . substr($mes, 0,2) . "-31";
 if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "select id_tienda, tip, agrupar, 
 (select nombre from agrupedidos where id=agrupar) as nomag, fecha, 
-sum(cantidad) as qty, 
-sum(cantidad * ((select preciocosto from articulos where id=id_articulo)*1.05)) as imp 
+sum(cantidad) as qty,
+sum(cantidad * ((select precioneto from articulos where id=id_articulo))) as impN,
+sum(cantidad * ((select preciocosto from articulos where id=id_articulo))) as imp
 from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' GROUP BY id_tienda, tip, agrupar order by id_tienda, tip, fecha;
 ";
 $dbnivel->query($queryp);
@@ -59,6 +60,7 @@ while ($row = $dbnivel->fetchassoc()){
 
 $datos[$row['id_tienda']][$row['tip']][$row['fecha']][$row['nomag']]['qty']=$row['qty'];
 $datos[$row['id_tienda']][$row['tip']][$row['fecha']][$row['nomag']]['imp']=$row['imp'];
+$datos[$row['id_tienda']][$row['tip']][$row['fecha']][$row['nomag']]['impN']=$row['impN'];
 	
 
 };
@@ -81,10 +83,10 @@ $BTrang=array();$p=1;$sumas=array();
 
 $fila=1; $lT=""; $lTi="";
 foreach ($datos as $idt => $tips){
-$totQ=0; $totI=0;
+$totQ=0; $totI=0; $totIN=0;
 ####### cabecera tienda		
 $grid[$fila]['B']=$tiendasN[$idt] . " - $mes";	
-$Mrang["B$fila:E$fila"]=1;
+$Mrang["B$fila:F$fila"]=1;
 $align["B$fila"]='C';
 $BOLDrang	['B' . $fila]=1;
 $crang ['B' . $fila]='70DBFF';
@@ -93,7 +95,7 @@ $fila++;
 	############ cabecera tipo	
 	$fila++; 		
 	$grid[$fila]['B']=$eqtip[$tip];	
-	$Mrang["B$fila:E$fila"]=1;
+	$Mrang["B$fila:F$fila"]=1;
 	$align["B$fila"]='C';
 	$BOLDrang	['B' . $fila]=1;
 	$fila++;	 	
@@ -106,10 +108,11 @@ $fila++;
 			$align["D$fila"]='R';
 			
 			$grid[$fila]['E']=number_format($vals['imp'],2,',','.');	$totI=$totI+$vals['imp'];
+            $grid[$fila]['F']=number_format($vals['impN'],2,',','.');	$totIN=$totIN+$vals['impN'];
 			$align["E$fila"]='R';
 			
-			$BOLDrang	['B' . $fila . ':' . 'E' . $fila]=2;
-			$BTrang     ['B' . $fila . ':' . 'E' . $fila]=1;
+			$BOLDrang	['B' . $fila . ':' . 'F' . $fila]=2;
+			$BTrang     ['B' . $fila . ':' . 'F' . $fila]=1;
 			$fila++;
 	
 }}}
@@ -118,8 +121,9 @@ $fila++;
 $grid[$fila]['B']='TOTAL:';
 $grid[$fila]['D']=$totQ;							$align["D$fila"]='R';
 $grid[$fila]['E']=number_format($totI,2,',','.');	$align["E$fila"]='R';
-$BOLDrang	['B' . $fila . ':' . 'E' . $fila]=1;
-$BTrang     ['B' . $fila . ':' . 'E' . $fila]=1;
+$grid[$fila]['F']=number_format($totIN,2,',','.');	$align["F$fila"]='R';
+$BOLDrang	['B' . $fila . ':' . 'F' . $fila]=1;
+$BTrang     ['B' . $fila . ':' . 'F' . $fila]=1;
 $paginas[$fila]=1;
 $fila++;
 }
@@ -129,6 +133,7 @@ $anchos['B']=15;
 $anchos['C']=35;
 $anchos['D']=15;
 $anchos['E']=15;
+$anchos['F']=15;
 
 
 if(count($grid)>0){

@@ -54,16 +54,16 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "select id_tienda, tip, (SELECT codbarras from articulos where id=id_articulo) as cb, 
 CONCAT( (substring((SELECT codbarras from articulos where id=id_articulo),1,2)),(substring((SELECT codbarras from articulos where id=id_articulo),5)) ) as GS, 
 sum(cantidad) as qty , 
-(select preciocosto from articulos where id=id_articulo) as impu, 
-sum(cantidad * ((select preciocosto from articulos where id=id_articulo)*1.05)) as impt  
+sum(cantidad * ((select precioneto from articulos where id=id_articulo))) as net,
+sum(cantidad * ((select preciocosto from articulos where id=id_articulo))) as cos
 from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' GROUP BY id_tienda, tip, id_articulo order by id_tienda, tip, GS;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 
 
 $datos[$row['id_tienda']][$row['tip']][$row['cb']]['qty']=$row['qty'];
-$datos[$row['id_tienda']][$row['tip']][$row['cb']]['impu']=$row['impu'];
-$datos[$row['id_tienda']][$row['tip']][$row['cb']]['impt']=$row['impt'];	
+$datos[$row['id_tienda']][$row['tip']][$row['cb']]['impu']=$row['cos'];
+$datos[$row['id_tienda']][$row['tip']][$row['cb']]['impt']=$row['net'];
 
 };
 
@@ -96,7 +96,7 @@ $fila=1; $lT=""; $lTi=""; $count=1;
 
 
 foreach ($datos as $idt => $tips){
-$totQ=0; $totI=0; $cc=1;
+$totQ=0; $totIC=0;$totIN=0; $cc=1;
 ####### cabecera tienda	
 	
 $grid[$fila]['B']=$tiendasN[$idt] . " - $mes";	
@@ -124,10 +124,10 @@ $BOLDrang	[$cols[$cc]['B'] . $fila]=1;
 			$grid[$fila][$cols[$cc]['B']]=$eqtp[$tip] . $cb;
 			$grid[$fila][$cols[$cc]['C']]=$vals['qty'];	$totQ=$totQ+$vals['qty'];	
 			
-			$grid[$fila][$cols[$cc]['D']]=number_format($vals['impu'],2,',','.');
+			$grid[$fila][$cols[$cc]['D']]=number_format($vals['impu'],2,',','.');   $totIC=$totIC+$vals['impu'];
 			$align[$cols[$cc]['D'] . $fila]='R';
 			
-			$grid[$fila][$cols[$cc]['E']]=number_format($vals['impt'],2,',','.');	$totI=$totI+$vals['impt'];
+			$grid[$fila][$cols[$cc]['E']]=number_format($vals['impt'],2,',','.');	$totIN=$totIN+$vals['impt'];
 			$align[$cols[$cc]['E'] . $fila]='R';
 			
 			$BOLDrang	[$cols[$cc]['B'] . $fila . ":" . $cols[$cc]['E'] . $fila]=2;
@@ -141,7 +141,8 @@ $fila++;$count++;
 $fila=$ffila+46;
 $grid[$fila][$cols[$cc]['B']]='TOTAL:';
 $grid[$fila][$cols[$cc]['C']]=$totQ;							$align[$cols[$cc]['C'] . $fila]='R';
-$grid[$fila][$cols[$cc]['E']]=number_format($totI,2,',','.');	$align[$cols[$cc]['E'] . $fila]='R';
+$grid[$fila][$cols[$cc]['D']]=number_format($totIC,2,',','.');	$align[$cols[$cc]['D'] . $fila]='R';
+$grid[$fila][$cols[$cc]['E']]=number_format($totIN,2,',','.');	$align[$cols[$cc]['E'] . $fila]='R';
 $BOLDrang	[$cols[$cc]['B'] . $fila . ":" . $cols[$cc]['E'] . $fila]=1;
 $BTrang     [$cols[$cc]['B'] . $fila . ":" . $cols[$cc]['E'] . $fila]=1;
 $paginas[$fila]=1;
