@@ -1,15 +1,17 @@
 <?php
-foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";   eval($asignacion);};
+
 require_once("../db.php");
 require_once("../variables.php");
-
+foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";   eval($asignacion);};
 
 if (!$dbnivel->open()){die($dbnivel->error());};
+
 
 
 $queryp= "select id, orden from tiendas where id_tienda='$cod'";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){$posi=$row['orden'];$cambio=$row['id'];};
+
 
 
 if($orden=="up"){
