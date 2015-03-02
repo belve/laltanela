@@ -17,7 +17,7 @@ $eqtp[1]="R:";
 $eqtp[2]="P:";
 
 
-$frqcia="";
+$frqcia="";$sinfact="";
 $options=""; $cong=0;
 $id_proveedor="";$id_grupo="";$id_subgrupo="";$id_color="";$codigo="";$pvp="";$desde="";$hasta="";$temporada="";$hago="";
 $yalistados="";
@@ -48,7 +48,7 @@ $frqcia=1;
 $fini=substr($mes, 3,4) . "-" . substr($mes, 0,2) . "-01";
 $ffin=substr($mes, 3,4) . "-" . substr($mes, 0,2) . "-31";
 
-
+if($sinfact==1){$sinfact="AND id_articulo NOT IN (SELECT cod FROM sin_fact)";}else{$sinfact="";};
 
 if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "select id_tienda, tip, (SELECT codbarras from articulos where id=id_articulo) as cb, 
@@ -56,7 +56,7 @@ CONCAT( (substring((SELECT codbarras from articulos where id=id_articulo),1,2)),
 sum(cantidad) as qty , 
 sum(cantidad * ((select precioneto from articulos where id=id_articulo))) as net,
 sum(cantidad * ((select preciocosto from articulos where id=id_articulo))) as cos
-from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' GROUP BY id_tienda, tip, id_articulo order by id_tienda, tip, GS;";
+from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' $sinfact GROUP BY id_tienda, tip, id_articulo order by id_tienda, tip, GS;";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){
 

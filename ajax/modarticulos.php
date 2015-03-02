@@ -65,6 +65,12 @@ while ($row = $dbnivel->fetchassoc()){
 	
 	};
 
+$queryp= "select cod from sin_fact where cod=" . $valores[1];
+$dbnivel->query($queryp);$valores[30]=0;
+while ($row = $dbnivel->fetchassoc()){
+  if($row['cod']){$valores[30]=1;}
+}
+
 if (!$dbnivel->close()){die($dbnivel->error());};
 
 

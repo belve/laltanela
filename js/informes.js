@@ -502,8 +502,11 @@ for (var i = 0; i < tsel.length; i++) {if(tsel[i]==1){
 ttss=ttss + i + ','; tn++;
 }}
 if(tn==0){alert('Debe seleccionar alguna tienda.');}else{
-var mes=document.getElementById('fini').value
+var mes=document.getElementById('fini').value;
+
 mes=mes.replace('mm/aaaa','');
+if(document.getElementById('30').checked==true){var sinfact=1;}else{var sinfact=0;};
+
 
 if(mes==""){
 alert('Debe introducir un mes');	
@@ -520,8 +523,9 @@ url = url
  + "&mes=" + mes 
  + "&ttss=" + ttss 
  + "&risase=" + window.top.bRISASA  
- + "&frqcia=" + frqcia  
- + '&listador=1'; 
+ + "&frqcia=" + frqcia
+ + "&sinfact=" + sinfact
++ '&listador=1';
 
 getDATA(url);
 

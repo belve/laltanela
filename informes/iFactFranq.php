@@ -44,7 +44,7 @@ $frqcia=1;
 $fini=substr($mes, 3,4) . "-" . substr($mes, 0,2) . "-01";
 $ffin=substr($mes, 3,4) . "-" . substr($mes, 0,2) . "-31";
 
-
+if($sinfact==1){$sinfact="AND id_articulo NOT IN (SELECT cod FROM sin_fact)";}else{$sinfact="";};
 
 if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "select id_tienda, tip, agrupar, 
@@ -52,7 +52,7 @@ $queryp= "select id_tienda, tip, agrupar,
 sum(cantidad) as qty,
 sum(cantidad * ((select precioneto from articulos where id=id_articulo))) as impN,
 sum(cantidad * ((select preciocosto from articulos where id=id_articulo))) as imp
-from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' GROUP BY id_tienda, tip, agrupar order by id_tienda, tip, fecha;
+from pedidos where id_tienda IN ($ttss) AND fecha >= '$fini' AND fecha <= '$ffin' $sinfact GROUP BY id_tienda, tip, agrupar order by id_tienda, tip, fecha;
 ";
 $dbnivel->query($queryp);
 while ($row = $dbnivel->fetchassoc()){

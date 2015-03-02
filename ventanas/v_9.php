@@ -89,6 +89,7 @@ require_once("../variables.php");
 		<tr>
 			
 			<td><input type="checkbox" id="8"> Congelado</td>
+            <td><input type="checkbox" id="30"> Sin Fact</td>
 		
 		</tr>
 		

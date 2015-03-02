@@ -35,8 +35,11 @@ $.each(data, function(key, val) {
 if(key==1){if(document.getElementById('id')){document.getElementById('id').value=val;}}
   
 if(key==8){
-if(val==0){document.getElementById(key).checked=false;};
-if(val==1){document.getElementById(key).checked=true;};	
+    if(val==0){document.getElementById(key).checked=false;};
+    if(val==1){document.getElementById(key).checked=true;};
+}else if(key==30){
+    if(val==0){document.getElementById(key).checked=false;};
+    if(val==1){document.getElementById(key).checked=true;};
 }else{
 if(document.getElementById(key)){document.getElementById(key).value=val;};
 }
@@ -121,7 +124,9 @@ var detalles=document.getElementById('18').value;
 var comentarios=document.getElementById('19').value;
 var stockini=document.getElementById('20').value;
 
+
 if(document.getElementById('8').checked==true){var congelado=1;}else{var congelado=0;};
+if(document.getElementById('30').checked==true){var sinfact=1;}else{var sinfact=0;};
 	
 url = "/ajax/update2.php?tabla=articulos&campos[stock]=" + stock + 
 "&campos[refprov]=" + refprov  + 
@@ -134,7 +139,8 @@ url = "/ajax/update2.php?tabla=articulos&campos[stock]=" + stock +
 "&campos[detalles]=" + detalles  +  
 "&campos[comentarios]=" + comentarios  +  
 "&campos[congelado]=" + congelado  +  
-"&campos[stockini]=" + stockini  +  
+"&campos[stockini]=" + stockini  +
+"&campos[sinfact]=" + sinfact  +
 "&id=" + id;
 $.getJSON(url, function(data) {
 });	

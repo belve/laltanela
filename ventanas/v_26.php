@@ -63,7 +63,10 @@ window.top.tselALL	=1;
 
 	
 	
-	<div style="margin-left: 2px">Mes: <input value="mm/aaaa" type="text" class="corto pdias"  id="fini" onfocus="javascript:dlF(this.id);" onkeyup="javascript:tabFm(this.id);"></div>
+	<div style="margin-left: 2px">Mes: <input value="mm/aaaa" type="text" class="corto pdias"  id="fini" onfocus="javascript:dlF(this.id);" onkeyup="javascript:tabFm(this.id);">
+
+        <input type="checkbox" id="30" style="margin-left:10px;"> No Sin Fact
+    </div>
 	
 	<!--
 	<div style="margin-left: -2px; margin-top: 4px; "><input type="checkbox" id="frqcia" /> Incluir franquicias. </div>
