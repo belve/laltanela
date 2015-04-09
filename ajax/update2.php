@@ -21,9 +21,13 @@ if (!$dbnivel->open()){die($dbnivel->error());};
 $queryp= "update $tabla set $modificos where id=$id;"; 
 $dbnivel->query($queryp);
 echo $queryp;
+if (!$dbnivel->close()){die($dbnivel->error());};
+
+SyncModBD($queryp);
 
 
 if($tabla=='articulos'){
+    if (!$dbnivel->open()){die($dbnivel->error());};
 if($sinfact){
     $queryp= "insert into sin_fact (cod) values ('$id');";
     $dbnivel->query($queryp);
@@ -31,10 +35,10 @@ if($sinfact){
     $queryp= "delete from sin_fact where cod='$id';";
     $dbnivel->query($queryp);
 }
+    if (!$dbnivel->close()){die($dbnivel->error());};
 }
 
-if (!$dbnivel->close()){die($dbnivel->error());};
 
-SyncModBD($queryp);
+
 
 ?>
