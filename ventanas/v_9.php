@@ -169,6 +169,7 @@ require_once("../variables.php");
 <div style="clear: both;margin-bottom: 10px; "></div>
 
 
+<div id='opciones' style="   left: 546px;    position: absolute;    text-align: center;    top: 270px;    width: 300px;"></div>
 
 
 <div class="timer" id="timer"><img src="/iconos/loading1.gif"></div>

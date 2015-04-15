@@ -173,7 +173,7 @@ require_once("../variables.php");
 </div>
 
 <div style="clear: both;margin-bottom: 10px; "></div>
-<div id='opciones' style="   left: 545px;    position: absolute;    text-align: center;    top: 270px;    width: 300px;"></div>
+<div id='opciones' style="   left: 446px;    position: absolute;    text-align: center;    top: 270px;    width: 300px;"></div>
 
 
 

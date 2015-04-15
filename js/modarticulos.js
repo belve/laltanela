@@ -37,7 +37,7 @@ if(key==1){if(document.getElementById('id')){document.getElementById('id').value
 if(key==8){
     if(val==0){document.getElementById(key).checked=false;};
     if(val==1){document.getElementById(key).checked=true;};
-}else if(key==30){
+}else if((key==30)&&(document.getElementById(key))){
     if(val==0){document.getElementById(key).checked=false;};
     if(val==1){document.getElementById(key).checked=true;};
 }else{
@@ -72,8 +72,14 @@ $.getJSON(url, function(data) {
 $.each(data, function(key, val) {
 
 if(key==0){
-val=val.replace('c:/D/fotos/','');	
-document.getElementById('foto').src='http://laltalena.com/photos/' + val;};  
+console.log(val);
+var n = val.toString();
+var val2=n.replace("c:/D/fotos/","");
+var val3=val2.replace('.','');
+if(val3.length < val2.length) {
+    document.getElementById('foto').src = 'http://laltalena.com/photos/' + val2;
+}
+}
 
 if(key>0){
 if(document.getElementById('opciones')){	
