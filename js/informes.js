@@ -880,8 +880,15 @@ if(codigo=='descuadre'){
 	
 	};
 
-	
-url = url 
+
+    var ttss=""; var tn=0;
+    var tsel=window.top.tsel;
+    for (var i = 0; i < tsel.length; i++) {if(tsel[i]==1){
+        ttss=ttss + i + ','; tn++;
+    }}
+
+
+    url = url
  + "id_proveedor=" + prov
  + "&id_grupo=" + grup
  + "&id_subgrupo=" + subg
@@ -900,13 +907,18 @@ url = url
  + "&agru=" + agru 
  + "&mosF=" + mosF
  + "&refp=" + refp  
- + "&limite=" + limite 
- + '&listador=1'; 
+ + "&limite=" + limite
+ + "&ttss=" + ttss
+ + '&listador=1';
 
 
 
 fini=fini.replace('dd/mm/aaaa','');
 ffin=ffin.replace('dd/mm/aaaa','');
+
+
+console.log(url);
+if(tn==0){alert('Debe seleccionar alguna tienda.');}else{
 
 if(document.getElementById('fini')){
 if((fini=="")||(ffin=="")){
@@ -915,7 +927,7 @@ alert('Debe introducir un rango de fechas');
 getDATA(url);
 }}else{
 getDATA(url);	
-}
+}}
 
 }
 

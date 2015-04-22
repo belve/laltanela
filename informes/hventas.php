@@ -48,7 +48,7 @@ foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo .
 $fdesde=$fini; $fhasta=$ffin;
 $fini=substr($fini, 6,4) . "-" . substr($fini, 3,2) . "-" . substr($fini, 0,2);
 $ffin=substr($ffin, 6,4) . "-" . substr($ffin, 3,2) . "-" . substr($ffin, 0,2);
-
+$ttss=substr($ttss, 0,-1);
 
 $peds="";$cods="";$codigos=array();$vendidos=array();$cord=array();
 
@@ -82,12 +82,15 @@ while ($row = $dbnivel->fetchassoc()){$ncolor=$row['nombre'];};
 }
 
 
+$tiendasin=explode(",",$ttss);$tiendasin=array_flip($tiendasin);
 
-foreach ($tiendas as $idt => $nom) {
+
+foreach ($tiendas as $idt => $nom) {if(array_key_exists($idt,$tiendasin)){
 $vendidos[$idt]=array();
-$stocks[$idt]=array();	
-}
-
+$stocks[$idt]=array();
+$tiendas2[$idt]=$nom;
+}}
+$tiendas=$tiendas2;
 
 
 
@@ -173,7 +176,7 @@ $peds=substr($peds, 0,-1);
 
 $queryp= "select (select codbarras from articulos where id=id_articulo) as codbarras, 
 (select refprov from articulos where id=id_articulo) as refprov, 
-id_tienda, sum(cantidad) as cant from pedidos where (fecha >= '$fini' AND fecha <= '$ffin') AND (estado='T' OR estado='A' OR estado='F') $codigosIN group by id_articulo, id_tienda;";
+id_tienda, sum(cantidad) as cant from pedidos where (fecha >= '$fini' AND fecha <= '$ffin') AND (estado='T' OR estado='A' OR estado='F') AND id_tienda IN ($ttss) $codigosIN group by id_articulo, id_tienda;";
 $dbnivel->query($queryp); if($debug){echo "$queryp \n\n";};$enviados=array();
 while ($row = $dbnivel->fetchassoc()){
 	

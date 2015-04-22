@@ -3,6 +3,8 @@ require_once("../db.php");
 require_once("../variables.php");
 $cb=array();
 
+$colu[2]='B';
+$colu[3]='C';
 $colu[4]='D';
 $colu[5]='E';
 $colu[6]='F';
@@ -142,7 +144,7 @@ $styleArray = array(
 $styleArray2 = array(
     'font'  => array(
         'bold'  => true,
-        'size'  => 14
+        'size'  => 10
        
     ),
 	

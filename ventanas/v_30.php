@@ -4,7 +4,11 @@ require_once("../variables.php");
 
 require_once("../functions/gettiendas.php");
 
-
+$cajt="";
+foreach ($tiendas as $idt => $nomt) {
+    $cajt.="<div class='cajt' id='idt_$idt' onclick='javascript:cajtie($idt);' ondblclick='tselALL();' style='background-color:#8DC29E;'>$nomt</div> <script>window.top.tsel[$idt]=1;</script> ";
+}
+$cajt.="<div style='clear:both;'></div>";
 
 if (!$dbnivel->open()){die($dbnivel->error());};
 
@@ -74,14 +78,19 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 <link rel='stylesheet' type='text/css' href='/css/framework_inside.css' />
 
-
+    <script>
+        window.top.tsel	= new Array();
+        window.top.tselALL	=1;
+    </script>
 
 </head>
 <body>
 
+<div class="cajastiendas" style="position: relative; float: left; margin:0px;">
+    <?php echo $cajt; ?>
+</div>
 
-
-
+<div style="position:relative; float:left; margin-left:10px">
 <div style="float: left; border: 1px solid #888888; padding: 5px;">
 
 <div style="float:left;margin-right: 10px;">
@@ -178,7 +187,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 <iframe id="excel" src="" width="0" height="0" border="0" frameborder="0" marginheight="0" scrolling="no"></iframe>
 <iframe id="photos" src="" width="0" height="0" border="0" frameborder="0" marginheight="0" scrolling="no"></iframe>
-
+</div>
 <script>
 	window.top.OrdV=1;
 	window.top.OrdVO='A';
