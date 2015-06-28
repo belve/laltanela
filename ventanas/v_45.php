@@ -32,8 +32,17 @@ while ($row = $dbnivel->fetchassoc()){$fechaFIN=$row['fecha'];};
 
 	
 if (!$dbnivel->close()){die($dbnivel->error());};
-	
+
+
+
+
+
+
 $fechaINI=ffecha($fechaINI);
+$fecha = date_create_from_format('d/m/Y', $fechaINI);
+$fecha->add(new DateInterval('P1D'));
+$fechaINI= $fecha->format('d/m/Y');
+
 $fechaFIN=ffecha($fechaFIN);	
 
 function ffecha($F){
