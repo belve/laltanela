@@ -560,6 +560,7 @@ if (h==3){pact=pact - (amount*1);};
 if (h==4){pact=pact + (amount*1);};
 
 if (h==5){pact=(amount*1); };
+if (h==6){pact=Number(innerDoc.getElementById('p_'+i).value);};
 
 
 var pact = pact.toFixed(2);

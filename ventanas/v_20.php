@@ -298,6 +298,9 @@ document.getElementById('10').value='';
 	
 	<div onclick="chPrice(5);" class="boton" 	style="width:20px; position:relative; float: left; left:27px">Fijo</div>
 	<div style="clear:both;"></div>
+
+        <div onclick="chPrice(6);" class="boton" 	style="float: left; left: 1px; position: relative; width: 76px;">Restablecer</div>
+        <div style="clear:both;"></div>
 	
 	
 	</div>
