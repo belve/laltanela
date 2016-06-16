@@ -582,6 +582,7 @@ if(key=='html'){GRID.getElementById('grid').innerHTML=val;};
 if(key=='nagru'){parent.document.getElementById('nagru').innerHTML=val;};
 if(key=='estado'){pest_Cestado(val,parent.document);};
 if(key=='maxfil'){GRID.getElementById('filas').value=val;};
+if(key=='sumatorio'){parent.document.getElementById('b_sumatorio').innerHTML=val;};
 
 });
 });	

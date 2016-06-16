@@ -3,7 +3,7 @@ session_start();
 foreach($_GET as $nombre_campo => $valor){  $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";   eval($asignacion);};
 require_once("../db.php");
 require_once("../variables.php");require_once("../functions/gridreparto.php");
-
+$sumatiendas=array(); $numArt=0;
 
 if (!$dbnivel->open()){die($dbnivel->error());};
 
@@ -218,6 +218,7 @@ $colT[]='F';$colT[]='G';$colT[]='H';$colT[]='I';$colT[]='J';$colT[]='K';$colT[]=
 $colT[]='N';$colT[]='O';$colT[]='P';$colT[]='Q';$colT[]='R';$colT[]='S';$colT[]='T';$colT[]='U';$colT[]='V';$colT[]='W';
 //if($idagrupacion=='GRID'){$tindm=$tiendas;};
 $ctt=0;
+
 foreach ($tiendas as $idt => $nomc) {if(array_key_exists($idt, $tindm)){
 		
 $cabe[$nomc]= "<div class='cabtab_REP tab_REP_tie'>$nomc</div>";		
@@ -230,8 +231,11 @@ $gridEX[1][$colT[$ctt]]=$nomc;
 			$cant=$val[$idt];$idp=$idpeds[$ida][$idt];	
 			}else{
 			$cant="";$idp="";	
-			}	
-			
+			}
+
+    if(!$cant){$scant=0;}else{$scant=$cant*1;};
+    if(!array_key_exists($nomc,$sumatiendas)){$sumatiendas[$nomc]=$scant;}else{$sumatiendas[$nomc]=($sumatiendas[$nomc]) + $scant;};
+
 		if(!$modi){
 		$acciones2="";	
 		$acciones="
@@ -324,6 +328,30 @@ $anchos['C']=10;
 $anchos['D']=30;
 $anchos['E']=10;
 
+$sumatorio="";
+$nntie="<th>Artículos</th>"; $nncant="<td>$fila</td>";
+if (count($sumatiendas)>0){
+
+foreach($sumatiendas as $nt=>$can){
+    $nntie.="<th>$nt</th>";
+    $nncant.="<td>$can</td>";
+}
+}
+
+$sumatorio.="
+<table class='tbSumatorio' style='position: relative; float: left'>
+<thead>$nntie</thead>
+<tr>$nncant</tr>
+</table>
+";
+
+
+
+
+
+
+$sumatiendas['filas']=$fila;
+$valores['sumatorio']=$sumatorio;#json_encode($sumatiendas);
 
 
 $valores['cabe']=$cabe2;

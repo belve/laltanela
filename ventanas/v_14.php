@@ -280,7 +280,9 @@ echo "<div onclick='sumatienda($postiendas,\"$nomt\")' class='cabtab_REP tab_REP
 
 
 
+<div id="b_sumatorio">
 
+</div>
 
 
 
@@ -303,8 +305,12 @@ window.top.dblA=0;
 </script>
 
 
+
+
 	
 </div><!-- GESTIONAR -->
+
+
 
 
 

@@ -144,6 +144,10 @@ $(window).keydown(function(evt) {
 <div class="timer" id="timer2" style="visibility: hidden; left: 46%; top:17%;"><img src="/iconos/loading1.gif"></div>
 <div class="timer" id="timer3" style="visibility: hidden; left: 75%; top:17%;"><img src="/iconos/loading1.gif"></div>
 
+
+
+
+
 <script>
 
 	
@@ -285,7 +289,9 @@ echo "<div onclick='sumatienda($postiendas,\"$nomt\")' class='cabtab_REP tab_REP
 
 
 
+    <div id="b_sumatorio">
 
+    </div>
 
 
 
