@@ -85,8 +85,8 @@ $res['pcm']="--";
 }
 
 
-$queryp="select (select sum(importe) from tickets where fecha <= '$ffin' AND fecha >= '$fini' $fEMP) /
- (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) as pvm;";
+$queryp="select (select sum(importe) from tickets where id_tienda IN ($ttss) AND fecha <= '$ffin' AND fecha >= '$fini' $fEMP) /
+ (select sum(cantidad) from ticket_det where id_tienda IN ($ttss) AND fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) as pvm;";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
 while ($row = $dbn->fetchassoc()){
@@ -99,8 +99,8 @@ $res['pvm']=number_format($row['pvm'],2,',','.');
 
 
 
-$queryp="select (select sum(cantidad) from ticket_det where fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) / 
-(select count(*) from tickets where fecha <= '$ffin' AND fecha >= '$fini' $fEMP) as upo;
+$queryp="select (select sum(cantidad) from ticket_det where id_tienda IN ($ttss) AND fecha <= '$ffin' AND fecha >= '$fini' $fEMP_D) /
+(select count(*) from tickets where id_tienda IN ($ttss) AND fecha <= '$ffin' AND fecha >= '$fini' $fEMP) as upo;
 ";
 $dbn->query($queryp);if($debug){echo "$queryp \n\n";};
 echo $dbn->error();
