@@ -34,6 +34,10 @@ var ocultos="";
 var arts=window.top.listArts[id]; //document.getElementById('art_' + id).value;
 var url="/ajax/getRbfromDB.php?id_rebaja=" + id;
 
+    var iframe = parent.document.getElementById('articulos');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    $(innerDoc).find('#ocultos').append("");
+
 $.getJSON(url, function(data) {
 $.each(data, function(key, val) {
 var datos=new Array();
@@ -50,17 +54,16 @@ var idr=datos[2];
 
 
 //document.getElementById('art_' + id).value
-window.top.listArts[id]=arts; 									if(window.debug ==1) {console.log('L50 : INS REB_ACT|(art_' + id + ') : '+ arts);};
+    window.top.listArts[id]=arts;
+    if(window.debug ==1) {console.log('L50 : INS REB_ACT|(art_' + id + ') : '+ arts);};
 
-var iframe = parent.document.getElementById('articulos');
-var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-innerDoc.getElementById('ocultos').innerHTML=innerDoc.getElementById('ocultos').innerHTML + 
-"<div id='oc_" + key + "' >" + 
+
+$(innerDoc).find('#ocultos').append("<div id='oc_" + key + "' >" +
 "<input type='hidden' id='" + id + "_i_" + key + "' value='" + key + "'>" + 
 "<input type='hidden' id='" + id + "_c_" + key + "' value='" + idc + "'>" + 
 "<input type='hidden' id='" + id + "_p_" + key + "' value='" + idp + "'>" + 
-"<input type='hidden' id='" + id + "_r_" + key + "' value='" + idr + "'> </div>";
+"<input type='hidden' id='" + id + "_r_" + key + "' value='" + idr + "'> </div>");
 }
 
 
