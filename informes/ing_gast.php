@@ -158,7 +158,9 @@ $queryp= "select
 (select preciocosto from articulos where id=id_articulo) * sum(suma) as costo,
 sum(suma) as cant,
 id_tienda
-from fij_stock where bd=2 AND (fecha >= '$fini' AND fecha <= '$ffin') $codigosIN group by id_articulo, id_tienda;";
+from fij_stock where bd=2 AND (fecha >= '$fini' AND fecha <= '$ffin') AND
+id_tienda IN ($ttss)
+$codigosIN group by id_articulo, id_tienda;";
 
 $dbnivel->query($queryp);
 
@@ -200,7 +202,8 @@ id_tienda,
 sum(cantidad) as cant,
 sum(importe * cantidad) as imp
 from ticket_det where (fecha >= '$fini' AND fecha <= '$ffin')
-AND id_articulo IN ($barrasIN)
+AND id_articulo IN ($barrasIN) AND
+id_tienda IN ($ttss)
 group by id_tienda;";
 $dbnivel->query($queryp); if($debug){echo "$queryp \n\n";};
 
@@ -234,6 +237,11 @@ foreach ($grid as $idt => $fields) {$fila++;
     if(array_key_exists($idt,$tiendasN)){$tie=$tiendasN[$idt];}else{$tie='--';}
     $grilla[$fila]['A']=$tie; $BOLDrang['A'.$fila]=1;
 
+    if(!array_key_exists('costo',$fields)){$fields['costo']=0;};
+    if(!array_key_exists('cant',$fields)){$fields['cant']=0;};
+    if(!array_key_exists('vend',$fields)){$fields['vend']=0;};
+    if(!array_key_exists('vcant',$fields)){$fields['vcant']=0;};
+
     $c1=$fields['costo']; $c2=round(($c1*$iva/100),2); $c3=$fields['cant']; $c4=$fields['vend']; $c5=round(($c4 - ($c4/(1+($iva/100)))),2); $c4=$c4-$c5;  $c6=$fields['vcant'];  $c7=($c4 +$c5) - ($c1 + $c2);
 
     $grilla[$fila]['B']=$c1;
@@ -255,6 +263,11 @@ foreach ($grid as $idt => $fields) {$fila++;
 
 }
 $fila++;
+
+if(!array_key_exists('costo',$totales)){$totales['costo']=0;};
+if(!array_key_exists('cant',$totales)){$totales['cant']=0;};
+if(!array_key_exists('vend',$totales)){$totales['vend']=0;};
+if(!array_key_exists('vcant',$totales)){$totales['vcant']=0;};
 
 $c1=$totales['costo']; $c2=round(($c1*$iva/100),2); $c3=$totales['cant']; $c4=$totales['vend']; $c5=round(($c4 - ($c4/(1+($iva/100)))),2);  $c4=$c4-$c5;  $c6=$totales['vcant']; $c7=($c4 +$c5) - ($c1 + $c2);
 

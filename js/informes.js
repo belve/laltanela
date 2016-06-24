@@ -960,6 +960,7 @@ if(key=='opt'){document.getElementById('lempS').innerHTML=val;}
 function getDATA(url){$.ajaxSetup({'async': false});
 if(document.getElementById('mphotos')){document.getElementById('mphotos').setAttribute("style", "visibility:hidden;");};
 if(window.debug ==1) {console.log('url: ' + url);};
+
 document.getElementById('status').innerHTML="CALCULANDO";
 document.getElementById('reloj').setAttribute("style", "visibility:visible;");
 
