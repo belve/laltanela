@@ -855,8 +855,15 @@ var ffin="";
 //document.getElementById(8).value="";
 //document.getElementById(9).value="";
 //document.getElementById(10).value="";
-	
 
+
+
+
+
+
+if(codigo=='ing_gast'){
+        var url="/informes/ing_gast.php?";
+};
 
 if(codigo=='ventas'){
 	var url="/informes/hventas.php?";
@@ -918,6 +925,7 @@ ffin=ffin.replace('dd/mm/aaaa','');
 
 
 console.log(url);
+
 if(tn==0){alert('Debe seleccionar alguna tienda.');}else{
 
 if(document.getElementById('fini')){

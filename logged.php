@@ -97,9 +97,10 @@ $(window).keydown(function(evt) {
         	<li onclick="javascript:owin('v_39','KPIs','');"><a>KPIs</a></li>
         	<li onclick="javascript:owin('v_25','Descuentos en tiendas','');"><a>Descuentos en tiendas</a></li>
         	<li onclick="javascript:owin('v_26','Facturación mercancía','');"><a>Facturación mercancía</a></li>
-        	
+            <li onclick="javascript:owin('v_50','Ingresos/Gastos','');"><a>Ingresos/Gastos</a></li>
         </ul>
     </li>
+
     <?php } ?>
     
  
