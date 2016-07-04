@@ -92,7 +92,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
-<div style="position:absolute; top: 0px; left: 0px;  border: 1px solid #888888; padding: 5px;     width: 661px;">
+<div style="position:absolute; top: 0px; left: 0px;  border: 1px solid #888888; padding: 5px;     width: 710px;">
 
 <div style="float:left;margin-right: 10px;">
 <div>Proveedor: <select style="margin-left:0px;" id="2" class="medio"><?php echo $htmlProv; ?></select></div>
@@ -132,7 +132,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
-<div style="position: absolute;top: 90px;left: 0px;    width: 154px; border: 1px solid #888888; padding: 5px; ">
+<div style="position: absolute;top: 115px;left: 0px;    width: 154px; border: 1px solid #888888; padding: 5px; ">
 
 <div style="float: left; position: relative">
 	
@@ -144,12 +144,12 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 </div>
 
 
-<div class="cajastiendas" style="position: absolute; top:90px; left: 200px; margin:0px;">
+<div class="cajastiendas" style="position: absolute; top:115px; left: 200px; margin:0px;">
    <?php echo $cajt; ?>
 </div>
 
 
-<div style="position: absolute; top:90px; left: 500px; margin:0px;">
+<div style="position: absolute; top:115px; left: 500px; margin:0px;">
 	
 	<div style="margin:0px; width: 151px;" class="boton" onclick="javascript:informe('ing_gast');" >Informe >> </div>
 
@@ -158,7 +158,7 @@ if (!$dbnivel->close()){die($dbnivel->error());};
 
 
 
-    <div style="float: left;  position: absolute; top: 124px; left: 545px;">
+    <div style="float: left;  position: absolute; top: 150px; left: 545px;">
 
         <div id="reloj" class="relojCalc" style="visibility: hidden;"><img src="/iconos/loading1.gif"></div>
         <div id="status" style="font-size: 12px; text-decoration: blink; color: #888888;"></div>
