@@ -242,7 +242,14 @@ foreach ($grid as $idt => $fields) {$fila++;
     if(!array_key_exists('vend',$fields)){$fields['vend']=0;};
     if(!array_key_exists('vcant',$fields)){$fields['vcant']=0;};
 
-    $c1=$fields['costo']; $c2=round(($c1*$iva/100),2); $c3=$fields['cant']; $c4=$fields['vend']; $c5=round(($c4 - ($c4/(1+($iva/100)))),2); $c4=$c4-$c5;  $c6=$fields['vcant'];  $c7=($c4 +$c5) - ($c1 + $c2);
+    $c1=$fields['costo'];
+    $c2=round(($c1*$iva/100),2);
+    $c3=$fields['cant'];
+    $c4=$fields['vend'];
+    $c5=round(($c4 - ($c4/(1+($iva/100)))),2);
+    $c4=$c4-$c5;
+    $c6=$fields['vcant'];
+    $c7=($c4 -$c1 + $c2 - $c5);
 
     $grilla[$fila]['B']=$c1;
     $grilla[$fila]['C']=$c2;
