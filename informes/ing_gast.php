@@ -134,7 +134,7 @@ $codigosIN="AND id_articulo IN ($codigosIN)";
 
 
 $queryp= "select
-(select preciocosto from articulos where id=id_articulo) * sum(cantidad) as costo,
+sum((select preciocosto from articulos where id=id_articulo) * cantidad) as costo,
 sum(cantidad) as cant,
 id_tienda
 from pedidos where
